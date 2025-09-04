@@ -21,5 +21,6 @@ from manager import views as mViews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('registroPropiedades/', mViews.registro),
-    path('propiedades/', mViews.propiedades)
+    path('propiedades/', mViews.propiedades),
+    path('login/', mViews.logIn)
 ]
