@@ -6,3 +6,9 @@ def registro(request):
 
 def propiedades(request):
     return render(request, 'templatesApp/propiedades.html')
+
+def logIn(request):
+    return render(request, 'templatesApp/login.html')
+
+def manage(request):
+    return render(request, 'templatesApp/manage.html')
