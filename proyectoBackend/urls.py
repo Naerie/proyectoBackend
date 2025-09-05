@@ -24,5 +24,10 @@ urlpatterns = [
     path('registroPropiedades/', mViews.registro),
     path('propiedades/', mViews.propiedades),
     path('login/', mViews.logIn),
-    path('form/', mainViews.formCliente)
+    path('form/', mainViews.formCliente),
+    path('home/', mainViews.homeCliente),
+    path('manage/',mViews.manage),
+    path('', mainViews.index),
+    path('nosotros/', mainViews.sobreNosotros),
+    path('contacto/',mainViews.contacto)
 ]
