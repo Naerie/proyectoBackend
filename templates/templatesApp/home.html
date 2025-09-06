@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>INICIO</h1>
-    
-</body>
-</html>
+<!-- pagina home clientes -->
+
+<!-- herencia para la pagina base-cliente -->
+{% extends "templatesApp/base-cliente.html" %}
+
+<!-- cambio de titulo de la pagina -->
+{% block title %}SERVICOPIAPO PROPIEDADES {% endblock %}
+
+
+<!-- prueba de contenido dinamico -->
+{% block content %}
+<h1>PAGINA HOME</h1>
+{% endblock %}

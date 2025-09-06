@@ -8,7 +8,7 @@ def homeCliente(request):
     return render (request, 'templatesApp/home.html')
 
 def index(request):
-    return render (request, 'templatesApp/index.html')
+    return render (request, 'templatesApp/home.html')
 
 def sobreNosotros(request):
     return render (request, 'templatesApp/nosotros.html')
