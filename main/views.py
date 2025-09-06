@@ -4,11 +4,15 @@ from django.shortcuts import render
 def formCliente(request):
     return render (request, 'templatesApp/cliente.html')
 
-def homeCliente(request):
-    return render (request, 'templatesApp/home.html')
-
 def index(request):
-    return render (request, 'templatesApp/home.html')
+    propiedades =[
+        {
+            'titulo':'Casa 1',
+            'imagen':'assets/img/placeholder-card.jpeg',
+            'descripcion':'100mt2, lorem ipsun'
+        }
+    ]
+    return render (request, 'templatesApp/home.html', {"propiedades":propiedades})
 
 def sobreNosotros(request):
     return render (request, 'templatesApp/nosotros.html')

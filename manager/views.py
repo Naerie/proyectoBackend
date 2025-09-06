@@ -10,5 +10,5 @@ def propiedades(request):
 def logIn(request):
     return render(request, 'templatesApp/login.html')
 
-def manage(request):
+def homeManager(request):
     return render(request, 'templatesApp/manage.html')

@@ -9,7 +9,7 @@
 
 <!-- prueba de contenido dinamico -->
 {% block content %}
-<!-- barra de busqueda -->
+<!-- BARRA DE BUSQUEDA -->
 <div class="container d-flex justify-content-center mt-4 mb-4">
   <form class="row g-2 align-items-center">
     <!-- seleccion de estado de propiedad -->
@@ -48,7 +48,36 @@
       <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
 
+
+
   </form>
+</div>
+    <!-- FIN BARRA DE BUSQUEDA -->
+     <!-- grid cards -->
+<div class="row mt-5">
+    {% for p in propiedades %}
+    <div class="col-md-4 mb-4">
+    <!-- CARD 1 -->
+      <div class="card h-100" style="width: 18rem;">
+        <img src="{% static p.imagen %}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{ p.titulo }}</h5>
+          <p class="card-text">{{ p.descripcion }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+      <p>No hay propiedades disponibles.</p>
+    {% endfor %}
 </div>
 
 {% endblock %}
