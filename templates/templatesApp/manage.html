@@ -3,8 +3,58 @@
 {% extends "templatesApp/base-admin.html"%}
 {% load static %}
 
-
 {% block title %} SERVICOPIAPO GESTION {% endblock %}
-{% block content%}
 
+{% block content %}
+<div class="container">
+  <!-- Encabezado -->
+  <div class="mb-4">
+    <p class="text-muted">Panel de administración de servicopiapo propiedades.</p>
+  </div>
+
+  <!-- Accesos rápidos -->
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">Propiedades</h5>
+          <p class="card-text">Administra las propiedades disponibles para arriendo o venta.</p>
+          <a href="{%url 'listado-propiedades'%}" class="btn btn-primary">Ver propiedades</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">Clientes</h5>
+          <p class="card-text">Revisa y gestiona la información de tus clientes.</p>
+          <a href="" class="btn btn-primary">Ver clientes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">Publicaciones activas</h5>
+          <p class="card-text">Visualiza las publicaciones visibles en la página web.</p>
+          <a href="" class="btn btn-primary">Ver publicaciones</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección opcional: estado general -->
+  <div class="row mt-5">
+    <div class="col">
+      <div class="alert alert-info shadow-sm">
+        <h5 class="alert-heading">Estado general</h5>
+        <p>Actualmente hay <strong>{{ total_properties }}</strong> propiedades registradas,
+           <strong>{{ total_customers }}</strong> clientes activos y
+           <strong>{{ total_publications }}</strong> publicaciones activas.</p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

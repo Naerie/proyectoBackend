@@ -28,8 +28,7 @@
         <option value="1">Casas</option>
         <option value="2">Departamentos</option>
         <option value="3">Oficinas</option>
-        <option value="4">Oficinas</option>
-        <option value="5">Terrenos</option>
+        <option value="4">Terrenos</option>
       </select>
     </div>
     <!-- seleccion de comuna -->
@@ -53,11 +52,12 @@
   </form>
 </div>
     <!-- FIN BARRA DE BUSQUEDA -->
-     <!-- grid cards -->
+    <!-- grid cards -->
 <div class="row mt-5">
+  <!-- ciclo for para la creacion de tarjetas por propiedad -->
     {% for p in propiedades %}
     <div class="col-md-4 mb-4">
-    <!-- CARD 1 -->
+    <!-- CARD imagen y datos desde la vista -->
       <div class="card h-100" style="width: 18rem;">
         <img src="{% static p.imagen %}" class="card-img-top">
         <div class="card-body">

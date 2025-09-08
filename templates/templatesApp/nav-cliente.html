@@ -1,0 +1,32 @@
+    {%load static%}
+    <!-- NAV CLIENTE con bootstrap -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img src="{%static 'assets/img/logo.png'%}" alt="Logo" width="120" height="120" class="d-inline-block align-text-top">    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home'%}">INICIO</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            PROPIEDADES
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">VENTA</a></li>
+            <li><a class="dropdown-item" href="#">ARRIENDO</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about'%}">QUIENES SOMOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contacto' %}">CONTACTO</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+<!-- fin nav -->

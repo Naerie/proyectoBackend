@@ -1,0 +1,45 @@
+<!-- templatesApp/sidebar-admin.html -->
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark min-vh-100" style="width: 280px;">
+  <!-- Branding -->
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <span class="fs-4">Sidebar</span>
+  </a>
+
+  <hr>
+
+  <!-- Menú -->
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a href="{% url 'home-manager' %}" 
+      class="nav-link {% if request.resolver_match.url_name == 'home-manager' %}active text-white{% else %}text-white{% endif %}">INICIO</a>
+    </li>
+    <li><a href="{% url 'listado-propiedades'%}" class="nav-link {% if request.resolver_match.url_name == 'listado-propiedades' %}active text-white{% else %}text-white{% endif %}">Propiedades</a></li>
+    <li><a href="#" class="nav-link text-white">Orders</a></li>
+    <li><a href="#" class="nav-link text-white">Products</a></li>
+    <li><a href="#" class="nav-link text-white">Customers</a></li>
+  </ul>
+
+  <hr>
+
+  <!-- Usuario abajo -->
+  <div class="dropdown">
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+       data-bs-toggle="dropdown" aria-expanded="false">
+      <img
+        src="{% if user.is_authenticated and user.profile and user.profile.avatar_url %}{{ user.profile.avatar_url }}{% else %}https://github.com/mdo.png{% endif %}"
+        alt="avatar" width="32" height="32" class="rounded-circle me-2">
+      <strong>{% if user.is_authenticated %}{{ user.username }}{% else %}Invitado{% endif %}</strong>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+      <li><a class="dropdown-item" href="#">New project...</a></li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><hr class="dropdown-divider"></li>
+      {% if user.is_authenticated %}
+        <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+      {% else %}
+        <li><a class="dropdown-item" href="">Sign in</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
