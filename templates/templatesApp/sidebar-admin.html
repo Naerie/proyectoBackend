@@ -10,11 +10,10 @@
   <!-- Menú -->
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a href="#" class="nav-link active text-white">
-        Home
-      </a>
+      <a href="{% url 'home-manager' %}" 
+      class="nav-link {% if request.resolver_match.url_name == 'home-manager' %}active text-white{% else %}text-white{% endif %}">INICIO</a>
     </li>
-    <li><a href="#" class="nav-link text-white">Dashboard</a></li>
+    <li><a href="{% url 'listado-propiedades'%}" class="nav-link {% if request.resolver_match.url_name == 'listado-propiedades' %}active text-white{% else %}text-white{% endif %}">Propiedades</a></li>
     <li><a href="#" class="nav-link text-white">Orders</a></li>
     <li><a href="#" class="nav-link text-white">Products</a></li>
     <li><a href="#" class="nav-link text-white">Customers</a></li>
