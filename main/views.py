@@ -1,17 +1,13 @@
 from django.shortcuts import render
+from datos import propiedades
+from django.http import JsonResponse
 
 # Create your views here.
 def formCliente(request):
     return render (request, 'templatesApp/cliente.html')
 
 def index(request):
-    propiedades =[
-        {
-            'titulo':'Casa 1',
-            'imagen':'assets/img/placeholder-card.jpeg',
-            'descripcion':'100mt2, lorem ipsun'
-        }
-    ]
+    propiedades
     return render (request, 'templatesApp/home.html', {"propiedades":propiedades})
 
 def sobreNosotros(request):
@@ -19,3 +15,6 @@ def sobreNosotros(request):
 
 def contacto(request):
     return render (request, 'templatesApp/contacto.html')
+
+def propiedad(request):
+    return render(request, 'templatesApp/propiedad.html', {'propiedades':propiedades})
