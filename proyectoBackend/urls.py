@@ -21,13 +21,16 @@ from main import views as mainViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('registroPropiedades/', mViews.registro),
-    path('propiedades/', mViews.propiedades),
-    path('login/', mViews.logIn),
+    # cliente
+    path('', mainViews.index, name="home"),
+    path('nosotros/', mainViews.sobreNosotros, name="about"),
+    path('contacto/',mainViews.contacto, name="contacto"),
+    # admin
+    path('login/', mViews.logIn, name="login-admin"),
+    path('manage/',mViews.homeManager, name='home-manager'),
+    path('registroPropiedades/', mViews.registro, name="registro-propiedades"),
+    path('propiedades/', mViews.propiedades, name="listado-propiedades"),
+    # ??
     path('form/', mainViews.formCliente),
-    path('home/', mainViews.homeCliente),
-    path('manage/',mViews.manage),
-    path('', mainViews.index),
-    path('nosotros/', mainViews.sobreNosotros),
-    path('contacto/',mainViews.contacto)
+    path('propiedad/', mainViews.propiedad, name='propiedad')
 ]

@@ -1,12 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>INICIO</h1>
+<!-- pagina home clientes -->
+
+<!-- herencia para la pagina base-cliente -->
+{% extends "templatesApp/base-cliente.html" %}
+{% load static %}
+<!-- cambio de titulo de la pagina -->
+{% block title %}SERVICOPIAPO PROPIEDADES {% endblock %}
+
+
+<!-- prueba de contenido dinamico -->
+{% block content %}
+<!-- BARRA DE BUSQUEDA -->
+<div class="container d-flex justify-content-center mt-4 mb-4">
+  <form class="row g-2 align-items-center">
+    <!-- seleccion de estado de propiedad -->
+    <div class="col-auto">
+      <select class="form-select">
+        <option selected>Operación</option>
+        <option value="1">Arriendo</option>
+        <option value="2">Venta</option>
+      </select>
+    </div>
     
-</body>
-</html>
+    <!-- seleccion de tipo de propiedad -->
+    <div class="col-auto">
+      <select class="form-select">
+        <option selected>Tipo de inmueble</option>
+        <option value="1">Casas</option>
+        <option value="2">Departamentos</option>
+        <option value="3">Oficinas</option>
+        <option value="4">Oficinas</option>
+        <option value="5">Terrenos</option>
+      </select>
+    </div>
+    <!-- seleccion de comuna -->
+    <div class="col-auto">
+        <select class="form-select">
+            <option selected>Comuna</option>
+            <option value="1">Copiapó</option>
+            <option value="2">Caldera</option>
+            <option value="3">Tierra Amarilla</option>
+        </select>
+        </div>
+
+
+    <!-- Botón -->
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+
+
+
+  </form>
+</div>
+    <!-- FIN BARRA DE BUSQUEDA -->
+     <!-- grid cards -->
+<div class="row mt-5">
+    {% for p in propiedades %}
+    <div class="col-md-4 mb-4">
+    <!-- CARD 1 -->
+      <div class="card h-100" style="width: 18rem;">
+        <img src="{% static p.imagen %}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{ p.titulo }}</h5>
+          <p class="card-text">{{ p.descripcion }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+          <a href="{% url 'propiedad' %}" class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+      <p>No hay propiedades disponibles.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
