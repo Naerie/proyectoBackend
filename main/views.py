@@ -4,9 +4,6 @@ from about import about
 from django.http import JsonResponse
 
 # Create your views here.
-def formCliente(request):
-    return render (request, 'templatesApp/cliente.html')
-
 def index(request):
     return render (request, 'templatesApp/home.html', {"propiedades":propiedades})
 

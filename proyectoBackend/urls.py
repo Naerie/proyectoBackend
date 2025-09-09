@@ -30,7 +30,5 @@ urlpatterns = [
     path('manage/',mViews.homeManager, name='home-manager'),
     path('registroPropiedades/', mViews.registro, name="registro-propiedades"),
     path('propiedades/', mViews.propiedades, name="listado-propiedades"),
-    # ??
-    path('form/', mainViews.formCliente),
     path('propiedad/', mainViews.propiedad, name='propiedad')
 ]

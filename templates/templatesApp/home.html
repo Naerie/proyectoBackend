@@ -59,10 +59,10 @@
     <div class="col-md-4 mb-4">
     <!-- CARD imagen y datos desde la vista -->
       <div class="card h-100" style="width: 18rem;">
-        <img src="{% static p.imagen %}" class="card-img-top">
+        <img src="{% static p.imagenes.0 %}" class="card-img-top" alt="{{ p.titulo }}">
         <div class="card-body">
           <h5 class="card-title">{{ p.titulo }}</h5>
-          <p class="card-text">{{ p.descripcion }}</p>
+          <p class="card-text">{{ p.direccion }}</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">An item</li>
