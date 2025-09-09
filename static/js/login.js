@@ -1,21 +1,23 @@
 let intentos = 4; // número máximo de intentos
 
-  function validar() {
-      let email = document.getElementById('email').value;
-      let passwd = document.getElementById('passwd').value;
+function validar(event) {
+    event.preventDefault(); // evita que el formulario se envíe
 
-      if (email === 'admin@gmail.com' && passwd === '123456') {
-          consolelog('Inicio de sesión exitoso.');
-          window.location.href = "http://127.0.0.1:8000/propiedades";
-      } else {
-          intentos--; 
-          if (intentos > 0) {
-              alert(`Contraseña o correo inválido. Te quedan ${intentos} intentos.`);
-          } else {
-              alert('Has excedido el número de intentos.');
-              document.getElementById('email').disabled = true;
-              document.getElementById('passwd').disabled = true;
-              document.getElementById('btnLogin').disabled = true;
-          }
-      }
-  }
+    let email = document.getElementById('email').value;
+    let passwd = document.getElementById('password').value;
+
+    if (email === 'admin@gmail.com' && passwd === '123456') {
+        console.log('Inicio de sesión exitoso.');
+        window.location.href = "http://127.0.0.1:8000/propiedades";
+    } else {
+        intentos--; 
+        if (intentos > 0) {
+            alert(`Contraseña o correo inválido. Te quedan ${intentos} intentos.`);
+        } else {
+            alert('Has excedido el número de intentos.');
+            document.getElementById('email').disabled = true;
+            document.getElementById('password').disabled = true;
+            document.getElementById('btnLogin').disabled = true;
+        }
+    }
+}
