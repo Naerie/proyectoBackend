@@ -4,31 +4,91 @@
 {%block title%}Agregar propiedades {%endblock%}
 
 
-{%block content %}
-  <h1>Registrar Propiedad</h1>
-  <form>
+{% block content %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow-sm p-4">
+        <h2 class="mb-4 text-center">Publicar Propiedad</h2>
+        <form>
+          <!-- Título -->
+          <div class="mb-3">
+            <label for="titulo" class="form-label">Título</label>
+            <input type="text" class="form-control" id="titulo" placeholder="Ej: Casa en el centro de la ciudad">
+          </div>
 
-    <label for="titulo">Título</label><br>
-    <input type="text" id="titulo" name="titulo"><br><br>
+          <!-- Imagen Thumb -->
+          <div class="mb-3">
+            <label for="thumb" class="form-label">Imagen principal (thumb)</label>
+            <input class="form-control" type="file" id="thumb" accept="image/*">
+          </div>
 
-    <label for="direccion">Dirección</label><br>
-    <input type="text" id="direccion" name="direccion"><br><br>
+          <!-- Imágenes para carrusel -->
+          <div class="mb-3">
+            <label for="imagenes" class="form-label">Imágenes para carrusel</label>
+            <input class="form-control" type="file" id="imagenes" accept="image/*" multiple>
+            <div class="form-text">Puedes subir varias imágenes.</div>
+          </div>
 
-    <label for="precio">Precio</label><br>
-    <input type="number" id="precio" name="precio"><br><br>
+          <!-- Cantidad de baños -->
+          <div class="mb-3">
+            <label for="banos" class="form-label">Cantidad de baños</label>
+            <input type="number" class="form-control" id="banos" min="0" placeholder="Ej: 2">
+          </div>
 
-    <label for="tipo">Tipo</label><br>
-    <select id="tipo" name="tipo">
-      <option value="casa">Casa</option>
-      <option value="departamento">Departamento</option>
-      <option value="parcela">Parcela</option>
-      <option value="oficina">Oficina</option>
-    </select><br><br>
+          <!-- Superficie en m2 -->
+          <div class="mb-3">
+            <label for="mt2" class="form-label">Superficie (m²)</label>
+            <input type="number" class="form-control" id="mt2" min="0" placeholder="Ej: 120">
+          </div>
 
-    <label for="descripcion">Descripción</label><br>
-    <textarea id="descripcion" name="descripcion"></textarea><br><br>
+          <!-- Cantidad de habitaciones -->
+          <div class="mb-3">
+            <label for="habitaciones" class="form-label">Cantidad de habitaciones</label>
+            <input type="number" class="form-control" id="habitaciones" min="0" placeholder="Ej: 3">
+          </div>
 
-    <button type="submit">Guardar</button>
-  </form>
+          <!-- Tipo de inmueble -->
+          <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo de inmueble</label>
+            <select class="form-select" id="tipo">
+              <option selected disabled>Selecciona tipo</option>
+              {% for t in tipos_inmueble %}
+                <option value="{{ t|lower }}">{{ t }}</option>
+              {% endfor %}
+            </select>
+          </div>
 
-{%endblock%}
+          <!-- Estado -->
+          <div class="mb-3">
+            <label for="estado" class="form-label">Estado</label>
+            <select class="form-select" id="estado">
+              <option selected disabled>Selecciona estado</option>
+              {% for e in estado %}
+                <option value="{{ e|lower }}">{{ e }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <!-- Ubicación -->
+          <div class="mb-3">
+            <label for="ubicacion" class="form-label">Ubicación</label>
+            <input type="text" class="form-control" id="ubicacion" placeholder="Ej: Calle 123, Ciudad, Región">
+          </div>
+
+          <!-- Descripción -->
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea class="form-control" id="descripcion" rows="5" placeholder="Escribe aquí la descripción de la propiedad..."></textarea>
+          </div>
+
+          <!-- Botón -->
+          <div class="d-grid">
+            <button type="button" class="btn btn-primary btn-lg">Publicar Propiedad</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

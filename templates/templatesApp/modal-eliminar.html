@@ -1,0 +1,18 @@
+<!-- Modal eliminar (solo visual, no hace nada) -->
+<div class="modal fade" id="modalEliminar{{ item.id }}" tabindex="-1" aria-labelledby="modalEliminarLabel{{ item.id }}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEliminarLabel{{ item.id }}">Eliminar propiedad</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro que deseas eliminar la propiedad <strong>{{ item.titulo }}</strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
