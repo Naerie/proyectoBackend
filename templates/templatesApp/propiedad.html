@@ -4,9 +4,10 @@
 
 <div class="container my-5">
     <div class="row g-4">
-        <!-- Carousel de imágenes -->
-        <div class="col-12 col-md-8 mx-auto mb-4">
-            <div id="propertyCarousel" class="carousel slide shadow rounded" data-bs-ride="carousel">
+        <!-- Columna principal: Carousel e información de la propiedad -->
+        <div class="col-lg-8">
+            <!-- Carousel de imágenes -->
+            <div id="propertyCarousel" class="carousel slide shadow rounded mb-4" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     {% for img in propiedades.0.imagenes %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -32,10 +33,8 @@
                     {% endfor %}
                 </div>
             </div>
-        </div>
 
-        <!-- Información de la propiedad y contacto de la corredora -->
-        <div class="col-12 col-md-8 mx-auto">
+            <!-- Información de la propiedad -->
             <h2 class="mb-2">{{ propiedades.0.titulo }}</h2>
             <p class="lead">{{ propiedades.0.descripcion }}</p>
 
@@ -44,32 +43,34 @@
                 <li><strong>Tipo de propiedad:</strong> {{ propiedades.0.tipoPropiedad }}</li>
                 <li><strong>Estado:</strong> <span class="text-success">{{ propiedades.0.estadoPropiedad }}</span></li>
             </ul>
+        </div>
 
-            <!-- Botón de contacto -->
-            <div class="d-flex justify-content-start align-items-center gap-3">
-                <a href="#" class="btn btn-lg btn-primary shadow-sm" style="min-width: 180px;"
-   data-bs-toggle="modal" data-bs-target="#contactModal">Agendar Visita</a>
-                <span class="text-muted">Déjanos tus datos y te responderemos pronto.</span>
+        <!-- Columna derecha: Formulario simple al lado -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">¿Estás interesado?</h5>
+                    <p class="text-muted mb-3">Déjanos tus datos y te contactaremos pronto.</p>
+                    <form method="POST" action="{% url 'contacto' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="nombreCli" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombreCli" name="nombreCli" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="correoCli" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="correoCli" name="correoCli" placeholder="tu@correo.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tlfCliente" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="tlfCliente" name="tlfCliente" placeholder="+56 9 1234 5678" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-   <!-- Modal de contacto -->
-<div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content border-0">
-      <div class="modal-header text-white">
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body p-0">
-        <iframe src="{% url 'contacto' %}" frameborder="0" style="width: 100%; height: 600px;"></iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 {% endblock %}
