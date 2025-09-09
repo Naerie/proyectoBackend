@@ -1,9 +1,15 @@
 from django.shortcuts import render
 from datos import propiedades
+from datos import tiposPropiedad, estadosPropiedad
+
 
 # Create your views here.
 def registro(request):
-    return render(request, 'templatesApp/registrarPropiedades.html')
+    contexto = {
+        'tipos_inmueble': tiposPropiedad,
+        'estado': estadosPropiedad
+    }
+    return render(request, 'templatesApp/registrarPropiedades.html', contexto)
 
 def verPropiedades(request):
     return render(request, 'templatesApp/propiedades.html', {'propiedades':propiedades})

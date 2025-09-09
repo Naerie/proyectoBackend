@@ -33,3 +33,8 @@ about = {
     'Vision': 'Ser la corredora de propiedades de referencia en Atacama, reconocida por la lealtad, compromiso y seriedad con nuestros clientes. Aspiramos a consolidarnos como un puente seguro entre propietarios y arrendatarios/compradores, contribuyendo al desarrollo habitacional y empresarial de la región, siempre con un sello de confianza y servicio humano.'
 }
 
+
+tiposPropiedad = ['Casa', 'Departamento', 'Oficina']
+estadosPropiedad = ['Disponible', 'No disponible', 'Reservado']
+
+
