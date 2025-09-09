@@ -1,11 +1,6 @@
 from django.shortcuts import render
 from datos import propiedades
-from django.http import JsonResponse
-
 # Create your views here.
-def formCliente(request):
-    return render (request, 'templatesApp/cliente.html')
-
 def index(request):
     propiedades
     return render (request, 'templatesApp/home.html', {"propiedades":propiedades})
