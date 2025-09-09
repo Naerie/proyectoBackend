@@ -1,8 +1,10 @@
 let intentos = 4; // número máximo de intentos
 
-  function validar() {
-      let email = document.getElementById('email').value;
-      let passwd = document.getElementById('passwd').value;
+function validar(event) {
+    event.preventDefault(); // evita que el formulario se envíe
+
+    let email = document.getElementById('email').value;
+    let passwd = document.getElementById('password').value;
 
 <<<<<<< Updated upstream
       if (email === 'admin@gmail.com' && passwd === '123456') {

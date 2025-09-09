@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from datos import propiedades
+from datos import about
+from django.http import JsonResponse
+
 # Create your views here.
 def index(request):
-    propiedades
     return render (request, 'templatesApp/home.html', {"propiedades":propiedades})
 
 def sobreNosotros(request):
-    return render (request, 'templatesApp/nosotros.html')
+    return render (request, 'templatesApp/nosotros.html', about)
 
 def contacto(request):
     return render (request, 'templatesApp/contacto.html')
