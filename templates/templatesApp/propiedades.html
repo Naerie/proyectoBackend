@@ -1,5 +1,5 @@
 {%extends 'templatesApp/base-admin.html'%}
-
+{%load static%}
 {%block title %}PROPIEDADES{%endblock%}
 
 {% block content %}
@@ -10,6 +10,38 @@
   Agregar propiedades
 </a>
 
+<div class="row mt-5">
+{% for p in propiedades %}
+<div class="col-md-4 mb-4 mt-4">
+  <div class="card h-100" style="width: 18rem;">
+    <img src="{% static p.thumb %}" class="card-img-top" alt="{{ p.titulo }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ p.titulo }}</h5>
+      <p class="card-text">{{ p.direccion }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+    </ul>
+    <div class="card-body">
+      <!-- Botones que abren los modals -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalActualizar{{ p.id }}">
+        Actualizar
+      </button>
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar{{ p.id }}">
+        Eliminar
+      </button>
+    </div>
+  </div>
+</div>
 
+<!-- Incluimos los modals con el item -->
+{% include 'templatesApp/modal-eliminar.html' with item=p %}
+{% empty %}
+  <p>No hay propiedades disponibles.</p>
+{% endfor %}
+</div>
 
-{% endblock %}
+{%endblock%}
+

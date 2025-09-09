@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from datos import propiedades
-from about import about
+from datos import about
 from django.http import JsonResponse
 
 # Create your views here.

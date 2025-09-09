@@ -16,6 +16,7 @@
     </li>
     <li><a href="{% url 'listado-propiedades'%}" class="nav-link {% if request.resolver_match.url_name == 'listado-propiedades' %}active text-white{% else %}text-white{% endif %}">Propiedades</a></li>
     <li><a href="{% url 'registro-propiedades'%}" class="nav-link {% if request.resolver_match.url_name == 'registro-propiedades' %}active text-white{% else %}text-white{% endif %}">Agregar propiedades</a></li>
+    <li><a href="{% url 'ver-contacto'%}" class="nav-link {% if request.resolver_match.url_name == 'ver-contacto' %}active text-white{% else %}text-white{% endif %}">Mensajes</a></li>
   </ul>
 
   <hr>

@@ -25,10 +25,12 @@ urlpatterns = [
     path('', mainViews.index, name="home"),
     path('nosotros/', mainViews.sobreNosotros, name="about"),
     path('contacto/',mainViews.contacto, name="contacto"),
+    path('propiedad/', mainViews.propiedad, name='propiedad'),
+
     # admin
     path('login/', mViews.logIn, name="login-admin"),
     path('manage/',mViews.homeManager, name='home-manager'),
     path('registroPropiedades/', mViews.registro, name="registro-propiedades"),
-    path('propiedades/', mViews.propiedades, name="listado-propiedades"),
-    path('propiedad/', mainViews.propiedad, name='propiedad')
+    path('propiedades/', mViews.verPropiedades, name="listado-propiedades"),
+    path('mensajes/', mViews.verMensajes, name='ver-contacto')
 ]
