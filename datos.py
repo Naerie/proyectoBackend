@@ -36,5 +36,8 @@ about = {
 
 tiposPropiedad = ['Casa', 'Departamento', 'Oficina']
 estadosPropiedad = ['Disponible', 'No disponible', 'Reservado']
+comuna = ['Copiapo', 'Caldera', 'Tierra Amarilla']
+operacionPropiedad = ['Venta', 'Arriendo']
+
 
 
