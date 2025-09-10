@@ -38,6 +38,8 @@
 
 <!-- Incluimos los modals con el item -->
 {% include 'templatesApp/modal-eliminar.html' with item=p %}
+{% include 'templatesApp/modal-actualizar.html' with item=p %}
+
 {% empty %}
   <p>No hay propiedades disponibles.</p>
 {% endfor %}
