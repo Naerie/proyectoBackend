@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from datos import propiedades
-from datos import tiposPropiedad, estadosPropiedad, comuna
-
+from datos import clientes
+from datos import tiposPropiedad, estadosPropiedad
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from datos import contacto
 
 # Create your views here.
 def registro(request):
     contexto = {
         'tipos_inmueble': tiposPropiedad,
-        'estado': estadosPropiedad,
-        'comuna': comuna
+        'estado': estadosPropiedad
     }
     return render(request, 'templatesApp/registrarPropiedades.html', contexto)
 
@@ -22,7 +24,14 @@ def homeManager(request):
     return render(request, 'templatesApp/manage.html')
 
 def verMensajes(request):
-    return render(request, 'templatesApp/contacto-admin.html')
+    return render(request, 'templatesApp/contacto-admin.html', {'contacto':contacto})
 
 def gestionar(request):
     return render(request, 'templatesApp/gestionar.html')
+
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('login-admin')
+
+def Interes(request):
+    return render(request, 'templatesApp/interes.html', {'clientes':clientes})

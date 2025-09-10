@@ -40,4 +40,22 @@ comuna = ['Copiapo', 'Caldera', 'Tierra Amarilla']
 operacionPropiedad = ['Venta', 'Arriendo']
 
 
+clientes = [
+        {
+            "nombre": "Juan Pérez",
+            "email": "juan@example.com",
+            "telefono": "123456789",
+            "propiedad": "Casa Bella Vista",
+        }
+]
+
+contacto = [
+    {
+        'nombre': 'Maria Lopez',
+        'email': 'maria@example.com',
+        'telefono':"99999999",
+        'pref': 'Correo electronico',
+        'mensaje':'Estoy interesada en vender una casa.'
+    }
+]
 

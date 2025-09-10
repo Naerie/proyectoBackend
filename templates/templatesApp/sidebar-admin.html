@@ -33,7 +33,12 @@
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
       <li><a class="dropdown-item" href="/" target="_blank" rel="noopener noreferrer">Ver como cliente</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="">Cerrar sesión</a></li>
+        <li>
+          <form action="{% url 'logout' %}" method="POST" class="m-0">
+            {% csrf_token %}
+            <button type="submit" class="dropdown-item">Cerrar Sesión</button>
+          </form>
+        </li>
     </ul>
   </div>
 </div>
