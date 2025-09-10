@@ -16,8 +16,9 @@
     <div class="col-auto">
       <select class="form-select">
         <option selected>Operación</option>
-        <option value="1">Arriendo</option>
-        <option value="2">Venta</option>
+              {% for o in operacion %}
+                <option value="{{ o|lower }}">{{ o }}</option>
+              {% endfor %}
       </select>
     </div>
     
@@ -25,19 +26,18 @@
     <div class="col-auto">
       <select class="form-select">
         <option selected>Tipo de inmueble</option>
-        <option value="1">Casas</option>
-        <option value="2">Departamentos</option>
-        <option value="3">Oficinas</option>
-        <option value="4">Terrenos</option>
+              {% for t in tipos_inmueble %}
+                <option value="{{ t|lower }}">{{ t }}</option>
+              {% endfor %}
       </select>
     </div>
     <!-- seleccion de comuna -->
     <div class="col-auto">
         <select class="form-select">
             <option selected>Comuna</option>
-            <option value="1">Copiapó</option>
-            <option value="2">Caldera</option>
-            <option value="3">Tierra Amarilla</option>
+              {% for c in comuna %}
+                <option value="{{ c|lower }}">{{ c }}</option>
+              {% endfor %}
         </select>
         </div>
 

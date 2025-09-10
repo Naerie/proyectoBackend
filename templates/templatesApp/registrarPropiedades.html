@@ -73,9 +73,18 @@
           <!-- Ubicación -->
           <div class="mb-3">
             <label for="ubicacion" class="form-label">Ubicación</label>
-            <input type="text" class="form-control" id="ubicacion" placeholder="Ej: Calle 123, Ciudad, Región">
+            <input type="text" class="form-control" id="ubicacion" placeholder="Ej: Calle 123">
           </div>
-
+          <!-- Comuna -->
+          <div class="mb-3">
+            <label for="comuna" class="form-label">Comuna</label>
+            <select class="form-select" id="comuna">
+              <option selected disabled>Seleccione comuna</option>
+              {% for c in comuna %}
+                <option value="{{ c|lower }}">{{ c }}</option>
+              {% endfor %}
+            </select>
+          </div>
           <!-- Descripción -->
           <div class="mb-3">
             <label for="descripcion" class="form-label">Descripción</label>
