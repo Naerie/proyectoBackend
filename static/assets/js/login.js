@@ -8,7 +8,7 @@ function validar(event) {
 
     if (email === 'admin@gmail.com' && passwd === '123456') {
         console.log('Inicio de sesión exitoso.');
-        window.location.href = "{% url 'home-manager' %}";
+        window.location.href = "/manage/";
     } else {
         intentos--; 
         if (intentos > 0) {
