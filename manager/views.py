@@ -22,3 +22,6 @@ def homeManager(request):
 
 def verMensajes(request):
     return render(request, 'templatesApp/contacto-admin.html')
+
+def tipoPropiedad(request):
+    return render(request, 'templatesApp/tipoPropiedad.html')
