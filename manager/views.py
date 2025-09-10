@@ -10,7 +10,8 @@ from datos import contacto
 def registro(request):
     contexto = {
         'tipos_inmueble': tiposPropiedad,
-        'estado': estadosPropiedad
+        'estado': estadosPropiedad,
+        'comuna': comuna
     }
     return render(request, 'templatesApp/registrarPropiedades.html', contexto)
 

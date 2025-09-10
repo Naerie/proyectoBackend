@@ -17,7 +17,7 @@
           <td>${nombre}</td>
           <td class="text-end">
             <button class="btn btn-sm btn-outline-secondary me-2">Editar</button>
-            <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+            <button class="btn btn-sm btn-outline-danger" onclick="this.closest('tr').remove()">Eliminar</button>
           </td>
         `;
         tabla.appendChild(tr);
