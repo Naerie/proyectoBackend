@@ -4,7 +4,7 @@ from datos import clientes
 from datos import tiposPropiedad, estadosPropiedad
 from django.contrib.auth import logout
 from django.shortcuts import redirect
-from datos import contacto
+from datos import contacto, subs
 
 # Create your views here.
 def registro(request):
@@ -35,3 +35,6 @@ def cerrar_sesion(request):
 
 def Interes(request):
     return render(request, 'templatesApp/interes.html', {'clientes':clientes})
+
+def verSubscripciones(request):
+    return render(request, 'templatesApp/subscripciones.html', {'subscripciones':subs})

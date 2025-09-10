@@ -27,9 +27,9 @@
     <div class="col-md-4">
       <div class="card shadow-sm h-100">
         <div class="card-body">
-          <h5 class="card-title">Mensajes</h5>
+          <h5 class="card-title">Contactos</h5>
           <p class="card-text">Revisa y gestiona los mensajes recibidos.</p>
-          <a href="{%url 'ver-contacto' %}" class="btn btn-primary">Ver mensajes</a>
+          <a href="{%url 'ver-contacto' %}" class="btn btn-primary">Ver solicitudes de mensajes</a>
         </div>
       </div>
     </div>
@@ -45,37 +45,28 @@
     </div>
   </div>
 
-  <div class="row g-2">
+<div class="row g-2">
+  <!-- Card Personas Interesadas -->
   <div class="col-md-4 mt-4">
-  <div class="card shadow-sm h-100">
-    <div class="card-body">
-      <h5 class="card-title">Publicaciones activas</h5>
-      <p class="card-text">Visualiza las publicaciones visibles en la página web.</p>
-      <a href="" class="btn btn-primary">Ver publicaciones</a>
-    </div>
-  </div>
-</div>
-
-<div class="col-md-4 mt-4">
-      <div class="card shadow-sm h-100">
-        <div class="card-body">
-          <h5 class="card-title">Personas Interesadas</h5>
-          <p class="card-text">Visualiza y gestiona la lista de personas interesadas.</p>
-          <a href="{%url 'tabla-interes' %}" class="btn btn-primary">Ver</a>
-        </div>
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">Personas Interesadas</h5>
+        <p class="card-text">Visualiza y gestiona la lista de personas interesadas.</p>
+        <a href="{%url 'tabla-interes' %}" class="btn btn-primary">Ver</a>
       </div>
     </div>
   </div>
-</div>
 
-  <!-- Sección opcional: estado general -->
-  <div class="row mt-5">
-    <div class="col">
-      <div class="alert alert-info shadow-sm">
-        <h5 class="alert-heading">Estado general</h5>
-        <p>Actualmente hay <strong>{{ total_properties }}</strong> propiedades registradas,
-           <strong>{{ total_customers }}</strong> clientes activos y
-           <strong>{{ total_publications }}</strong> publicaciones activas.</p>
+  <!-- NUEVA Card Subscripciones -->
+  <div class="col-md-4 mt-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <!-- Título de la card -->
+        <h5 class="card-title">Subscripciones</h5>
+        <!-- Texto descriptivo -->
+        <p class="card-text">Consulta y administra las subscripciones registradas en el sistema.</p>
+        <!-- Botón que redirige a la vista correspondiente -->
+        <a href="{% url 'ver-subscripciones' %}" class="btn btn-primary">Ver subscripciones</a>
       </div>
     </div>
   </div>

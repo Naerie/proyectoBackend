@@ -36,4 +36,5 @@ urlpatterns = [
     path('gestion/', mViews.gestionar, name='gestion'),
     path('logout/', mViews.cerrar_sesion, name='logout'),
     path('interes/', mViews.Interes, name='tabla-interes'),
+    path('subscripciones/', mViews.verSubscripciones, name='ver-subscripciones')
 ]
