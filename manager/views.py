@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from datos import propiedades
 from datos import clientes
-from datos import tiposPropiedad, estadosPropiedad
+from datos import tiposPropiedad, estadosPropiedad, comuna
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from datos import contacto, subs
