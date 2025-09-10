@@ -23,3 +23,6 @@ def homeManager(request):
 
 def verMensajes(request):
     return render(request, 'templatesApp/contacto-admin.html')
+
+def gestionar(request):
+    return render(request, 'templatesApp/gestionar.html')

@@ -1,0 +1,124 @@
+{% extends 'templatesApp/base-admin.html' %}
+{% load static %}
+
+{% block title %}Gestión de Inmuebles{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- ================== CRUD PROPIEDADES ================== -->
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <div class="card shadow-sm p-4">
+        <h2 class="mb-4">Gestionar Tipo de Propiedades</h2>
+        <form id="formPropiedades">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="nombre_propiedad" placeholder="Nuevo Tipo de Propiedad" required>
+            <button class="btn btn-primary" type="submit">Agregar</button>
+          </div>
+        </form>
+        <table class="table table-hover mt-3">
+          <thead class="table-light">
+            <tr>
+              <th>Propiedad</th>
+              <th class="text-end">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaPropiedades">
+            <tr><td colspan="2" class="text-center">No hay registros.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================== CRUD DISPONIBILIDAD ================== -->
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <div class="card shadow-sm p-4">
+        <h2 class="mb-4">Gestionar Estados</h2>
+        <form id="formDisponibilidad">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="nombre_disponibilidad" placeholder="Nueva disponibilidad" required>
+            <button class="btn btn-primary" type="submit">Agregar</button>
+          </div>
+        </form>
+        <table class="table table-hover mt-3">
+          <thead class="table-light">
+            <tr>
+              <th>Disponibilidad</th>
+              <th class="text-end">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaDisponibilidad">
+            <tr><td colspan="2" class="text-center">No hay registros.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================== CRUD VENTA / ARRIENDO ================== -->
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <div class="card shadow-sm p-4">
+        <h2 class="mb-4">Gestionar Operaciones</h2>
+        <form id="formVentaArriendo">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="nombre_venta" placeholder="Nuevo Registro" required>
+            <button class="btn btn-primary" type="submit">Agregar</button>
+          </div>
+        </form>
+        <table class="table table-hover mt-3">
+          <thead class="table-light">
+            <tr>
+              <th>Tipo</th>
+              <th class="text-end">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaVentaArriendo">
+            <tr><td colspan="2" class="text-center">No hay registros.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+  // agregar fila a cualquier tabla
+  function agregarFila(formId, tablaId, nombreInput, columnaNombre) {
+    const form = document.getElementById(formId);
+    const tabla = document.getElementById(tablaId);
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const nombre = this[nombreInput].value.trim();
+      if(nombre){
+        // si está el mensaje "No hay registros" se quita
+        if(tabla.querySelector('td[colspan="2"]')){
+          tabla.innerHTML = '';
+        }
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${nombre}</td>
+          <td class="text-end">
+            <button class="btn btn-sm btn-outline-secondary me-2">Editar</button>
+            <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+          </td>
+        `;
+        tabla.appendChild(tr);
+        this.reset();
+      }
+    });
+  }
+
+  // se inicializan los cruds
+  agregarFila('formPropiedades', 'tablaPropiedades', 'nombre_propiedad', 'Propiedad');
+  agregarFila('formDisponibilidad', 'tablaDisponibilidad', 'nombre_disponibilidad', 'Disponibilidad');
+  agregarFila('formVentaArriendo', 'tablaVentaArriendo', 'nombre_venta', 'Venta/Arriendo');
+</script>
+{% endblock %}
