@@ -43,9 +43,16 @@ clientes = [
             "email": "juan@example.com",
             "telefono": "123456789",
             "propiedad": "Casa Bella Vista",
-            "mensaje": "Quisiera más información sobre esta propiedad.",
-            "fecha": "2025-09-09 16:30"
         }
 ]
 
+contacto = [
+    {
+        'nombre': 'Maria Lopez',
+        'email': 'maria@example.com',
+        'telefono':"99999999",
+        'pref': 'Correo electronico',
+        'mensaje':'Estoy interesada en vender una casa.'
+    }
+]
 
