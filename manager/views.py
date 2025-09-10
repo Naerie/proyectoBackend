@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from datos import propiedades
 from datos import tiposPropiedad, estadosPropiedad
-
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 # Create your views here.
 def registro(request):
@@ -25,3 +26,7 @@ def verMensajes(request):
 
 def gestionar(request):
     return render(request, 'templatesApp/gestionar.html')
+
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('login-admin')
