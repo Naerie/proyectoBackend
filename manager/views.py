@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from datos import propiedades
+from datos import clientes
 from datos import tiposPropiedad, estadosPropiedad
 from django.contrib.auth import logout
 from django.shortcuts import redirect
@@ -30,3 +31,6 @@ def gestionar(request):
 def cerrar_sesion(request):
     logout(request)
     return redirect('login-admin')
+
+def Interes(request):
+    return render(request, 'templatesApp/interes.html', {'clientes':clientes})

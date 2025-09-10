@@ -34,5 +34,6 @@ urlpatterns = [
     path('propiedades/', mViews.verPropiedades, name="listado-propiedades"),
     path('mensajes/', mViews.verMensajes, name='ver-contacto'),
     path('gestion/', mViews.gestionar, name='gestion'),
-    path('logout/', mViews.cerrar_sesion, name='logout')
+    path('logout/', mViews.cerrar_sesion, name='logout'),
+    path('interes/', mViews.Interes, name='tabla-interes'),
 ]

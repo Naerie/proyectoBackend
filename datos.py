@@ -37,4 +37,15 @@ about = {
 tiposPropiedad = ['Casa', 'Departamento', 'Oficina']
 estadosPropiedad = ['Disponible', 'No disponible', 'Reservado']
 
+clientes = [
+        {
+            "nombre": "Juan Pérez",
+            "email": "juan@example.com",
+            "telefono": "123456789",
+            "propiedad": "Casa Bella Vista",
+            "mensaje": "Quisiera más información sobre esta propiedad.",
+            "fecha": "2025-09-09 16:30"
+        }
+]
+
 
