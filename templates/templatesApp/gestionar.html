@@ -86,9 +86,9 @@
 
 </div>
 
-<!-- ================== JS ================== -->
+
 <script>
-  // Función para agregar fila a cualquier tabla
+  // agregar fila a cualquier tabla
   function agregarFila(formId, tablaId, nombreInput, columnaNombre) {
     const form = document.getElementById(formId);
     const tabla = document.getElementById(tablaId);
@@ -97,7 +97,7 @@
       e.preventDefault();
       const nombre = this[nombreInput].value.trim();
       if(nombre){
-        // Si está el mensaje "No hay registros", lo quitamos
+        // si está el mensaje "No hay registros" se quita
         if(tabla.querySelector('td[colspan="2"]')){
           tabla.innerHTML = '';
         }
@@ -116,7 +116,7 @@
     });
   }
 
-  // Inicializamos los tres CRUD
+  // se inicializan los cruds
   agregarFila('formPropiedades', 'tablaPropiedades', 'nombre_propiedad', 'Propiedad');
   agregarFila('formDisponibilidad', 'tablaDisponibilidad', 'nombre_disponibilidad', 'Disponibilidad');
   agregarFila('formVentaArriendo', 'tablaVentaArriendo', 'nombre_venta', 'Venta/Arriendo');

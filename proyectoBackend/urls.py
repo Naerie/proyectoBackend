@@ -33,5 +33,5 @@ urlpatterns = [
     path('registroPropiedades/', mViews.registro, name="registro-propiedades"),
     path('propiedades/', mViews.verPropiedades, name="listado-propiedades"),
     path('mensajes/', mViews.verMensajes, name='ver-contacto'),
-    path('tipoPropiedad/', mViews.tipoPropiedad, name='tipo-propiedad')
+    path('gestion/', mViews.gestionar, name='gestion')
 ]
