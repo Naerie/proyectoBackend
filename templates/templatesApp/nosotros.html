@@ -1,21 +1,26 @@
 {% extends 'templatesApp/base-cliente.html' %}
 {% load static %}
 
-{%block title%}SOBRE NOSOTROS {%endblock%}
+{% block title %}SOBRE NOSOTROS{% endblock %}
 
-{%block content%}
-<h3>Sobre Servicopiapo</h3>
-<p>
-    {{ texto|linebreaksbr }}
-</p>
-<h3>Mision</h3>
-    <p>
-        {{ Mision }}
+{% block content %}
+<div class="container mt-5 mb-5">
+    <!-- Card principal -->
+    <div class="card shadow-sm p-4">
+        <h1 class="display-5 fw-bold text-center mb-4">Sobre Servicopiapo</h1>
+        <p class="lead text-center text-muted mb-5">Conoce nuestra historia, misión y visión</p>
 
-    </p>
-<h3>Vision</h3>
-<p>
- {{ Vision }}
+        <!-- Quiénes somos -->
+        <h3 class="mb-3">Quiénes somos</h3>
+        <p class="mb-4">{{ texto|linebreaksbr }}</p>
 
-</p>
-{%endblock%}
+        <!-- Misión -->
+        <h3 class="mb-3">Misión</h3>
+        <p class="mb-4">{{ Mision|linebreaksbr }}</p>
+
+        <!-- Visión -->
+        <h3 class="mb-3">Visión</h3>
+        <p>{{ Vision|linebreaksbr }}</p>
+    </div>
+</div>
+{% endblock %}
