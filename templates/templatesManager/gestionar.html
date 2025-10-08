@@ -1,4 +1,4 @@
-{% extends 'templatesApp/base-admin.html' %}
+{% extends 'templatesManager/base-admin.html' %}
 {% load static %}
 
 {% block title %}Gestión de Inmuebles{% endblock %}
@@ -6,11 +6,11 @@
 {% block content %}
 <div class="container my-5">
 
-{% include 'templatesApp/crudTipop.html' %}
+{% include 'templatesManager/crudTipop.html' %}
 
-{% include 'templatesApp/crudDisponibilidad.html' %}
+{% include 'templatesManager/crudDisponibilidad.html' %}
 
-{% include 'templatesApp/crudOperaciones.html' %}
+{% include 'templatesManager/crudOperaciones.html' %}
 
 </div>
 

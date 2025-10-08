@@ -1,4 +1,4 @@
-{%extends 'templatesApp/base-admin.html'%}
+{%extends 'templatesManager/base-admin.html'%}
 {%load static%}
 {%block title %}PROPIEDADES{%endblock%}
 
@@ -37,8 +37,8 @@
 </div>
 
 <!-- Incluimos los modals con el item -->
-{% include 'templatesApp/modal-eliminar.html' with item=p %}
-{% include 'templatesApp/modal-actualizar.html' with item=p %}
+{% include 'templatesManager/modal-eliminar.html' with item=p %}
+{% include 'templatesManager/modal-actualizar.html' with item=p %}
 
 {% empty %}
   <p>No hay propiedades disponibles.</p>
