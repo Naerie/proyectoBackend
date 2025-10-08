@@ -9,7 +9,7 @@
     <div class="col-md-8">
       <div class="card shadow-sm p-4">
         <h2 class="mb-4 text-center">Contáctanos</h2>
-        <form>
+        <form method="POST">
           {{ form.as_p }}
           {% csrf_token %}
           <div class="d-grid">
