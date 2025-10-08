@@ -61,17 +61,17 @@ contacto = [
 
 subs = [
         {
-            'correo': 'f.fontaine@gmail.com', 
+            'correo': 'f.fontaine@example.com', 
             'fecha_subs': '09/09/2025', 
             'estado': 'activa'
         },
         {
-            'correo': 'xxxFirelordxxx@gmail.com', 
+            'correo': 'xxxFirelordxxx@example.com', 
             'fecha_subs': '01/09/2025', 
             'estado': 'cancelada'
         },
         {
-            'correo': 'Vladimir.Nerezza@gmail.com',
+            'correo': 'Vladimir.Nerezza@example.com',
             'fecha_subs': '25/08/2025', 
             'estado': 'activa'
         }

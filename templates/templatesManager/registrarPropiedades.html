@@ -10,7 +10,10 @@
     <div class="col-md-10">
       <div class="card shadow-sm p-4">
         <h2 class="mb-4 text-center">Publicar Propiedad</h2>
-        {%include 'templatesManager/form-registrarP.html' %}
+        {% comment %} {%include 'templatesManager/form-registrarP.html' %} {% endcomment %}
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="button" class="btn btn-primary btn-lg">Publicar Propiedad</button>
       </div>
     </div>
   </div>

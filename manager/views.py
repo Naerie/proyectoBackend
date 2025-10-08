@@ -5,18 +5,28 @@ from datos import tiposPropiedad, estadosPropiedad, comuna
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from datos import contacto, subs
+from manager import forms
 
 # Create your views here.
-def registro(request):
+'''def registro(request): #vista formulario antiguo
     contexto = {
         'tipos_inmueble': tiposPropiedad,
         'estado': estadosPropiedad,
         'comuna': comuna
     }
-    return render(request, 'templatesManager/registrarPropiedades.html', contexto)
+    return render(request, 'templatesManager/registrarPropiedades.html', contexto)'''
+
+def registro(request):
+    formulario = forms.FormRegistrarP()
+    data = {'form' : formulario}
+    return render(request, 'templatesManager/registrarPropiedades.html', data)
+
 
 def verPropiedades(request):
-    return render(request, 'templatesManager/propiedades.html', {'propiedades':propiedades})
+    formulario = forms.FormRegistrarP()
+    data = {'form' : formulario,
+            'propiedades':propiedades}
+    return render(request, 'templatesManager/propiedades.html', data)
 
 def logIn(request):
     return render(request, 'templatesManager/login.html')

@@ -10,54 +10,8 @@
       <div class="card shadow-sm p-4">
         <h2 class="mb-4 text-center">Contáctanos</h2>
         <form>
-          <!-- Nombre -->
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Tu nombre">
-          </div>
-
-          <!-- Email -->
-          <div class="mb-3">
-            <label for="email" class="form-label">Correo electrónico</label>
-            <input type="email" class="form-control" id="email" placeholder="Correo@ejemplo.com">
-          </div>
-
-          <!-- Teléfono -->
-          <div class="mb-3">
-            <label for="telefono" class="form-label">Número de teléfono</label>
-            <input type="tel" class="form-control" id="telefono" placeholder="+56 9 1234 5678">
-          </div>
-
-          <!-- Preferencia de contacto -->
-          <div class="mb-3">
-            <label class="form-label">Preferencia de contacto</label>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="preferencia" id="contactoCorreo" value="correo">
-              <label class="form-check-label" for="contactoCorreo">
-                Correo electrónico
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="preferencia" id="contactowsp" value="wsp">
-              <label class="form-check-label" for="contactoWsp">
-                Mensaje de texto (WhatsApp)
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="preferencia" id="contactoLlamada" value="llamada">
-              <label class="form-check-label" for="contactoLlamada">
-                Llamada telefónica
-              </label>
-            </div>
-          </div>
-
-          <!-- Mensaje -->
-          <div class="mb-3">
-            <label for="mensaje" class="form-label">Mensaje</label>
-            <textarea class="form-control" id="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
-          </div>
-
-          <!-- Botón -->
+          {{ form.as_p }}
+          {% csrf_token %}
           <div class="d-grid">
             <button type="button" class="btn btn-primary">Enviar</button>
           </div>
