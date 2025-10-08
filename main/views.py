@@ -14,14 +14,14 @@ def index(request):
         'comuna': comuna
     }
     
-    return render(request, 'templatesApp/home.html', contexto)
+    return render(request, 'templatesMain/home.html', contexto)
 
 
 def sobreNosotros(request):
-    return render (request, 'templatesApp/nosotros.html', about)
+    return render (request, 'templatesMain/nosotros.html', about)
 
 def contacto(request):
-    return render (request, 'templatesApp/contacto.html')
+    return render (request, 'templatesMain/contacto.html')
 
 def propiedad(request):
-    return render(request, 'templatesApp/propiedad.html', {'propiedades':propiedades})
+    return render(request, 'templatesMain/propiedad.html', {'propiedades':propiedades})

@@ -13,29 +13,29 @@ def registro(request):
         'estado': estadosPropiedad,
         'comuna': comuna
     }
-    return render(request, 'templatesApp/registrarPropiedades.html', contexto)
+    return render(request, 'templatesManager/registrarPropiedades.html', contexto)
 
 def verPropiedades(request):
-    return render(request, 'templatesApp/propiedades.html', {'propiedades':propiedades})
+    return render(request, 'templatesManager/propiedades.html', {'propiedades':propiedades})
 
 def logIn(request):
-    return render(request, 'templatesApp/login.html')
+    return render(request, 'templatesManager/login.html')
 
 def homeManager(request):
-    return render(request, 'templatesApp/manage.html')
+    return render(request, 'templatesManager/manage.html')
 
 def verMensajes(request):
-    return render(request, 'templatesApp/contacto-admin.html', {'contacto':contacto})
+    return render(request, 'templatesManager/contacto-admin.html', {'contacto':contacto})
 
 def gestionar(request):
-    return render(request, 'templatesApp/gestionar.html')
+    return render(request, 'templatesManager/gestionar.html')
 
 def cerrar_sesion(request):
     logout(request)
     return redirect('login-admin')
 
 def Interes(request):
-    return render(request, 'templatesApp/interes.html', {'clientes':clientes})
+    return render(request, 'templatesManager/interes.html', {'clientes':clientes})
 
 def verSubscripciones(request):
-    return render(request, 'templatesApp/subscripciones.html', {'subscripciones':subs})
+    return render(request, 'templatesManager/subscripciones.html', {'subscripciones':subs})
