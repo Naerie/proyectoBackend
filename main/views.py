@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 from datos import propiedades
 from datos import about
 from django.http import JsonResponse
@@ -8,17 +8,11 @@ from main import forms
 
 # Create your views here.
 def index(request):
-    formulario = forms.FormContacto()
-    if request.method == 'POST':
-        formulario = forms.FormContacto(request.POST)
-        if formulario.is_valid():
-            print('formulario de contacto valido')
     data = {
         'propiedades': propiedades,
         'operacion': operacionPropiedad,
         'tipos_inmueble': tiposPropiedad,
         'comuna': comuna,
-        'form':formulario
     }
     
     return render(request, 'templatesMain/home.html', data)
@@ -29,7 +23,13 @@ def sobreNosotros(request):
 
 
 def contacto(request):
-    formulario =forms.FormContacto()
+    formulario = forms.FormContacto()
+    if request.method == 'POST':
+        formulario = forms.FormContacto(request.POST)
+        if formulario.is_valid():
+            print('formulario de contacto valido')
+            formulario.save()
+            return redirect('home')    
     data = {'form' : formulario}
     return render(request, 'templatesMain/contacto.html', data)
 
