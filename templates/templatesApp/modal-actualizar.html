@@ -7,7 +7,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
-        {% include "templatesApp/form-registrarP.html" with propiedad=p %}
+        {% comment %} {% include "templatesManager/form-registrarP.html" with propiedad=p %} {% endcomment %}
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="button" class="btn btn-primary btn-lg">Actualizar Propiedad</button>
       </div>
     </div>
   </div>
