@@ -1,18 +1,52 @@
 from django import forms
+import re
+from main.models import Contacto
 
-class FormContacto(forms.Form):
-    OPTIONS = (
-        ("WSP", "Mensaje de texto (WhatsApp)"),
-        ("EMAIL", "Correo electrónico"),
-        ("CALL", "Llamada telefónica"),
-    )
-    nombre = forms.CharField()
-    email = forms.CharField()
-    nTelefono = forms.CharField()
-    formaContacto = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS)
-    mensaje = forms.CharField()
 
-    nombre.widget.attrs['class'] = "form-control"
-    email.widget.attrs['class'] = "form-control"
-    nTelefono.widget.attrs['class'] = "form-control"
-    mensaje.widget.attrs['class'] = "form-control"
+class FormContacto(forms.ModelForm):
+    class Meta:
+        model = Contacto
+        fields = '__all__'
+        labels = {
+            'nombre': 'Nombre:',
+            'email': 'Correo electrónico:',
+            'nTelefono': 'Número de teléfono:',
+            'mensaje': 'Mensaje:'
+        }
+
+        widgets = {
+            'nombre': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Ingresa tu nombre'
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'ejemplo@gmail.com'
+            }),
+            'nTelefono': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': '+56912345678'
+            }),
+            'mensaje': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Escribe tu mensaje aquí...',
+                'rows': 4
+            }),
+        }
+
+        #validaciones
+        def clean_email(self):
+            email = self.cleaned_data.get('email')
+            if email:
+                pat = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                if not re.fullmatch(pat, email):
+                    raise forms.ValidationError("Dirección de correo inválida.")
+            return email
+            
+        def clean_phone(self):
+            telefono = self.cleaned_data.get('nTelefono')
+            if telefono:
+                pat = ''
+                if not re.fullmatch(pat, telefono):
+                    raise forms.ValidationError('Numero de telefono inválido.')
+            return telefono

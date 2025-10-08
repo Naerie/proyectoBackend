@@ -9,6 +9,10 @@ from main import forms
 # Create your views here.
 def index(request):
     formulario = forms.FormContacto()
+    if request.method == 'POST':
+        formulario = forms.FormContacto(request.POST)
+        if formulario.is_valid():
+            print('formulario de contacto valido')
     data = {
         'propiedades': propiedades,
         'operacion': operacionPropiedad,

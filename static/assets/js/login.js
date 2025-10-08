@@ -6,7 +6,7 @@ function validar(event) {
     let email = document.getElementById('email').value;
     let passwd = document.getElementById('password').value;
 
-    if (email === 'admin@gmail.com' && passwd === '123456') {
+    if (email === 'manager@gmail.com' && passwd === '123456') {
         console.log('Inicio de sesión exitoso.');
         window.location.href = "/manage/";
     } else {
