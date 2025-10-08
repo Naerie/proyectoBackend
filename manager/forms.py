@@ -9,10 +9,11 @@ class FormRegistrarP(forms.Form):
     superficie = forms.FloatField()
     ubicacion = forms.CharField()
     comuna = forms.CharField() #descubrir si se pueden usar valores de base de dato en un select
-    descripcion = forms.CharField()
     tipo = forms.CharField() #same as comuna
     estado = forms.CharField() #same as comuna
-    precio = forms.IntegerField(required=False) 
+    precio = forms.IntegerField(required=False)
+    descripcion = forms.CharField()
+
 
 #buscar si se puede poner "alias" o algo para cambiar el texto que se muestra en el form
 
