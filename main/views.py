@@ -8,21 +8,21 @@ from main import forms
 
 # Create your views here.
 def index(request):
-    contexto = {
+    formulario = forms.FormContacto()
+    data = {
         'propiedades': propiedades,
         'operacion': operacionPropiedad,
         'tipos_inmueble': tiposPropiedad,
-        'comuna': comuna
+        'comuna': comuna,
+        'form':formulario
     }
     
-    return render(request, 'templatesMain/home.html', contexto)
+    return render(request, 'templatesMain/home.html', data)
 
 
 def sobreNosotros(request):
     return render (request, 'templatesMain/nosotros.html', about)
 
-""" def contacto(request):
-    return render (request, 'templatesMain/contacto.html') """
 
 def contacto(request):
     formulario =forms.FormContacto()

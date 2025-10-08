@@ -7,14 +7,6 @@ from django.shortcuts import redirect
 from datos import contacto, subs
 from manager import forms
 
-# Create your views here.
-'''def registro(request): #vista formulario antiguo
-    contexto = {
-        'tipos_inmueble': tiposPropiedad,
-        'estado': estadosPropiedad,
-        'comuna': comuna
-    }
-    return render(request, 'templatesManager/registrarPropiedades.html', contexto)'''
 
 def registro(request):
     formulario = forms.FormRegistrarP()

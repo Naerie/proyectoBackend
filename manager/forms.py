@@ -1,34 +1,26 @@
 from django import forms
+from manager.models import Propiedad
 
-class FormRegistrarP(forms.Form):
-    titulo = forms.CharField()
-    thumb = forms.ImageField()
-    carrusel = forms.ImageField()
-    nBaños = forms.IntegerField()
-    nHabitaciones = forms.IntegerField()
-    superficie = forms.FloatField()
-    ubicacion = forms.CharField()
-    comuna = forms.CharField() #descubrir si se pueden usar valores de base de dato en un select
-    tipo = forms.CharField() #same as comuna
-    estado = forms.CharField() #same as comuna
-    precio = forms.IntegerField(required=False)
-    descripcion = forms.CharField()
+class FormRegistrarP(forms.ModelForm):
+    class Meta:
+        model = Propiedad
+        fields = '__all__'
+        labels = {'titulo': 'Título de la propiedad',
+                'descripcion': 'Descripción',
+                'thumb': 'Imagen principal',            
+                'carrusel': 'Imágenes adicionales',            
+                'nBanos': 'Número de baños',            
+                'nHabitaciones': 'Número de habitaciones',            
+                'ubicacion': 'Dirección',            
+                'comuna': 'Comuna',            
+                'tipo': 'Tipo de propiedad',            
+                'estado': 'Estado',            
+                'superficie': 'Superficie en m²',            
+                'precio': 'Precio en CLP'        
+                }
 
 
-#buscar si se puede poner "alias" o algo para cambiar el texto que se muestra en el form
 
-    titulo.widget.attrs['class'] = "form-control"
-    descripcion.widget.attrs['class'] = "form-control"
-    thumb.widget.attrs['class'] = "form-control"
-    carrusel.widget.attrs['class'] = "form-control"
-    nBaños.widget.attrs['class'] = "form-control"
-    nHabitaciones.widget.attrs['class'] = "form-control"
-    ubicacion.widget.attrs['class'] = "form-control"
-    comuna.widget.attrs['class'] = "form-control"
-    tipo.widget.attrs['class'] = "form-control"
-    estado.widget.attrs['class'] = "form-control"
-    superficie.widget.attrs['class'] = "form-control"
-    precio.widget.attrs['class'] = "form-control"
 
 
 
