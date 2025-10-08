@@ -9,8 +9,5 @@ class Propiedad(models.Model):
     nHabitaciones = models.IntegerField()
     superficie = models.FloatField()
     ubicacion = models.CharField(max_length=50)
-    comuna = models.CharField(max_length=50)
-    tipo = models.CharField(max_length=50)
-    estado = models.CharField(max_length=50) 
     precio = models.CharField(max_length=50)
     descripcion = models.TextField()

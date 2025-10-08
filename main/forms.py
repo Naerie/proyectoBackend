@@ -1,18 +1,34 @@
 from django import forms
+from main.models import Contacto
 
-class FormContacto(forms.Form):
-    OPTIONS = (
-        ("WSP", "Mensaje de texto (WhatsApp)"),
-        ("EMAIL", "Correo electrónico"),
-        ("CALL", "Llamada telefónica"),
-    )
-    nombre = forms.CharField()
-    email = forms.CharField()
-    nTelefono = forms.CharField()
-    formaContacto = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=OPTIONS)
-    mensaje = forms.CharField()
+class FormContacto(forms.ModelForm):
+    class Meta:
+        model = Contacto
+        fields = '__all__'
+        labels = {
+            'nombre': 'Nombre:',
+            'email': 'Correo electrónico:',
+            'nTelefono': 'Número de teléfono:',
+            'mensaje': 'Mensaje:'
+        }
 
-    nombre.widget.attrs['class'] = "form-control"
-    email.widget.attrs['class'] = "form-control"
-    nTelefono.widget.attrs['class'] = "form-control"
-    mensaje.widget.attrs['class'] = "form-control"
+        widgets = {
+            'nombre': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Ingres tu nombre'
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'ejemplo@gmail.com'
+            }),
+            'nTelefono': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': '+56912345678'
+            }),
+            'mensaje': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Escribe tu mensaje aquí...',
+                'rows': 4
+            }),
+        }
+        
