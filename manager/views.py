@@ -10,12 +10,20 @@ from manager import forms
 
 def registro(request):
     formulario = forms.FormRegistrarP()
+    if request.method == 'POST':
+        formulario = forms.FormRegistrarP(request.POST)
+        if formulario.is_valid():
+            print('formulario de registro de propiedades valido')
     data = {'form' : formulario}
     return render(request, 'templatesManager/registrarPropiedades.html', data)
 
 
 def verPropiedades(request):
     formulario = forms.FormRegistrarP()
+    if request.method == 'POST':
+        formulario = forms.FormRegistrarP(request.POST)
+        if formulario.is_valid():
+            print('formulario de registro de propiedades valido')
     data = {'form' : formulario,
             'propiedades':propiedades}
     return render(request, 'templatesManager/propiedades.html', data)

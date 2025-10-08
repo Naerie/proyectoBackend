@@ -1,5 +1,7 @@
 from django import forms
+import re
 from main.models import Contacto
+
 
 class FormContacto(forms.ModelForm):
     class Meta:
@@ -15,7 +17,7 @@ class FormContacto(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Ingres tu nombre'
+                'placeholder': 'Ingresa tu nombre'
             }),
             'email': forms.EmailInput(attrs={
                 'class': 'form-control',
@@ -31,4 +33,20 @@ class FormContacto(forms.ModelForm):
                 'rows': 4
             }),
         }
-        
+
+        #validaciones
+        def clean_email(self):
+            email = self.cleaned_data.get('email')
+            if email:
+                pat = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+                if not re.fullmatch(pat, email):
+                    raise forms.ValidationError("Dirección de correo inválida.")
+            return email
+            
+        def clean_phone(self):
+            telefono = self.cleaned_data.get('nTelefono')
+            if telefono:
+                pat = ''
+                if not re.fullmatch(pat, telefono):
+                    raise forms.ValidationError('Numero de telefono inválido.')
+            return telefono
