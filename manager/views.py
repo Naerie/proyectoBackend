@@ -11,15 +11,17 @@ from manager import forms
 def registro(request):
     formulario = forms.FormRegistrarP()
     if request.method == 'POST':
-        formulario = forms.FormRegistrarP(request.POST)
+        formulario = forms.FormRegistrarP(request.POST, request.FILES)
         if formulario.is_valid():
             print('formulario de registro de propiedades valido')
+            formulario.save()
+            return redirect('home-manager')
     data = {'form' : formulario}
     return render(request, 'templatesManager/registrarPropiedades.html', data)
 
 
 def verPropiedades(request):
-    formulario = forms.FormRegistrarP()
+    formulario = forms.FormRegistrarP() #para el modal de actualizar
     if request.method == 'POST':
         formulario = forms.FormRegistrarP(request.POST)
         if formulario.is_valid():

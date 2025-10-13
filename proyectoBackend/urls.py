@@ -39,3 +39,4 @@ urlpatterns = [
     path('interes/', mViews.Interes, name='tabla-interes'),
     path('subscripciones/', mViews.verSubscripciones, name='ver-subscripciones')
 ]
+
