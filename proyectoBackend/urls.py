@@ -26,6 +26,7 @@ urlpatterns = [
     path('nosotros/', mainViews.sobreNosotros, name="about"),
     path('contacto/',mainViews.contacto, name="contacto"),
     path('propiedad/', mainViews.propiedad, name='propiedad'),
+    path('contacto-success/', mainViews.contactoSuccess, name='c-success'),
 
     # admin
     path('login/', mViews.logIn, name="login-admin"),

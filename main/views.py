@@ -29,9 +29,12 @@ def contacto(request):
         if formulario.is_valid():
             print('formulario de contacto valido')
             formulario.save()
-            return redirect('home')    
+            return redirect('c-success')    
     data = {'form' : formulario}
     return render(request, 'templatesMain/contacto.html', data)
 
 def propiedad(request):
     return render(request, 'templatesMain/propiedad.html', {'propiedades':propiedades})
+
+def contactoSuccess(request):
+    return render(request, 'templatesMain/contacto-success.html')
