@@ -9,7 +9,6 @@ class FormRegistrarP(forms.ModelForm):
             'titulo': 'Título de la propiedad:',
             'descripcion': 'Descripción:',
             'thumb': 'Imagen principal:',            
-            'carrusel': 'Imágenes adicionales:',            
             'nBanos': 'Número de baños:',                            
             'nHabitaciones': 'Número de habitaciones:',            
             'ubicacion': 'Dirección:',                      
@@ -25,16 +24,12 @@ class FormRegistrarP(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Selecciona la imagen principal'
             }),
-            'carrusel': forms.ClearableFileInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Selecciona imágenes adicionales',
-            }),
-            'nBanos': forms.NumberInput(attrs={
+            'nBanos': forms.Select(attrs={
                 'class': 'form-control',
                 'placeholder': 'Número de baños',
                 'min': 0
             }),
-            'nHabitaciones': forms.NumberInput(attrs={
+            'nHabitaciones': forms.Select(attrs={
                 'class': 'form-control',
                 'placeholder': 'Número de habitaciones',
                 'min': 0
@@ -58,6 +53,7 @@ class FormRegistrarP(forms.ModelForm):
                 'placeholder': 'Describa la propiedad',
                 'rows': 4
             }),
+            'moneda': forms.RadioSelect,
         }
 
 

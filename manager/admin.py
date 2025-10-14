@@ -7,7 +7,6 @@ class PropiedadAdmin(admin.ModelAdmin):
     list_display =[
         'titulo',
         'thumb',
-        'carrusel',
         'nBanos',
         'nHabitaciones',
         'superficie',
