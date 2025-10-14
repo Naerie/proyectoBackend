@@ -19,6 +19,9 @@ from django.urls import path
 from manager import views as mViews
 from main import views as mainViews
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # cliente
@@ -40,3 +43,5 @@ urlpatterns = [
     path('subscripciones/', mViews.verSubscripciones, name='ver-subscripciones')
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
