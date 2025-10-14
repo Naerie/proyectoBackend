@@ -6,3 +6,4 @@ class Contacto(models.Model):
     email = models.EmailField(max_length=50, blank=False)
     nTelefono = models.CharField(max_length=12,blank=False)
     mensaje = models.TextField(blank=False)
+    fecha = models.DateField(auto_now_add=True)

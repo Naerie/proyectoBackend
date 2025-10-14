@@ -6,7 +6,7 @@ from main.models import Contacto
 class FormContacto(forms.ModelForm):
     class Meta:
         model = Contacto
-        fields = '__all__'
+        exclude = ['fecha']
         labels = {
             'nombre': 'Nombre:',
             'email': 'Correo electrónico:',
