@@ -22,7 +22,6 @@ class Propiedad(models.Model):
     fecha = models.DateField(auto_now_add=True)
     #EXTRAS
         #Depto
-    pisoDepto = models.IntegerField(choices=CANTIDADES, default=1)
     conserje = models.BooleanField(default=False)
     logia = models.BooleanField(default=False)
     amoblado = models.BooleanField(default=False)
