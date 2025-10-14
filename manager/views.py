@@ -1,11 +1,15 @@
 from django.shortcuts import render
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from manager import forms
+from main.models import Contacto
+
+
+#archivo datos.py ir reemplazando 
 from datos import propiedades
 from datos import clientes
 from datos import tiposPropiedad, estadosPropiedad, comuna
-from django.contrib.auth import logout
-from django.shortcuts import redirect
-from datos import contacto, subs
-from manager import forms
+from datos import subs
 
 
 def registro(request):
@@ -37,6 +41,7 @@ def homeManager(request):
     return render(request, 'templatesManager/manage.html')
 
 def verMensajes(request):
+    contacto = Contacto.objects.all()
     return render(request, 'templatesManager/contacto-admin.html', {'contacto':contacto})
 
 def gestionar(request):
