@@ -23,7 +23,12 @@ def index(request):
 
 def propiedad(request, id):
     propiedad = get_object_or_404(Propiedad, id=id)
-    return render(request, 'templatesMain/propiedad.html', {'propiedad': propiedad})
+    propiedades = Propiedad.objects.get(id=id)
+    data ={
+        'propiedad':propiedad,
+        'propiedades':propiedades
+    }
+    return render(request, 'templatesMain/propiedad.html', data)
 
 def sobreNosotros(request):
     return render (request, 'templatesMain/nosotros.html', about)

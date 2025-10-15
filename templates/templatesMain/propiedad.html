@@ -5,12 +5,14 @@
 <div class="container my-5">
   <div class="row g-4">
     <div class="col-lg-8">
+        <!-- titulo -->
+        <h2>{{ propiedad.titulo }}</h2>
       <!-- carousel -->
       <div id="propertyCarousel" class="carousel slide shadow rounded mb-4" data-bs-ride="carousel">
         <div class="carousel-inner">
-          {% for img in propiedades.0.imagenes %}
+          {% for img in propiedad.thumb %}
           <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            <img src="{% static img %}" class="d-block w-100 rounded" alt="{{ propiedades.0.titulo }}">
+            <img src="{{ propiedad.thumb.url }}" class="d-block w-100 rounded" alt="{{ propiedad.titulo }}">
           </div>
           {% endfor %}
         </div>
@@ -23,12 +25,12 @@
       </div>
 
       <!-- info -->
-      <h2>{{ propiedades.0.titulo }}</h2>
-      <p class="lead">{{ propiedades.0.descripcion }}</p>
+      
+      <p class="lead">{{ propiedad.descripcion }}</p>
       <ul class="list-unstyled mb-4">
-        <li><strong>Dirección:</strong> {{ propiedades.0.direccion }}</li>
-        <li><strong>Tipo:</strong> {{ propiedades.0.tipoPropiedad }}</li>
-        <li><strong>Estado:</strong> <span class="text-success">{{ propiedades.0.estadoPropiedad }}</span></li>
+        <li><strong>Dirección:</strong> {{ propiedad.ubicacion }}</li>
+        <li><strong>Tipo:</strong> {{ propiedad.tipoPropiedad }}</li>
+        <li><strong>Estado:</strong> <span class="text-success">{{ propiedad.estadoPropiedad }}</span></li>
       </ul>
     </div>
 
@@ -83,7 +85,7 @@
 
   // Marcador en la propiedad
   L.marker([-27.3668, -70.3322]).addTo(map)
-    .bindPopup("{{ propiedades.0.titulo }}<br>{{ propiedades.0.direccion }}")
+    .bindPopup("{{ propiedad.titulo }}<br>{{ propiedad.direccion }}")
     .openPopup();
 </script>
 
