@@ -23,7 +23,19 @@ def index(request):
 
 def propiedad(request, id):
     propiedad = get_object_or_404(Propiedad, id=id)
-    return render(request, 'templatesMain/propiedad.html', {'propiedad': propiedad})
+    propiedades = Propiedad.objects.get(id=id)
+    formulario = forms.FormCliente()
+    if request.method == 'POST':
+        formulario = forms.FormCliente(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('c-success')
+    data ={
+        'propiedad':propiedad,
+        'propiedades':propiedades,
+        'form':formulario
+    }
+    return render(request, 'templatesMain/propiedad.html', data)
 
 def sobreNosotros(request):
     return render (request, 'templatesMain/nosotros.html', about)
@@ -43,3 +55,4 @@ def contacto(request):
 
 def contactoSuccess(request):
     return render(request, 'templatesMain/contacto-success.html')
+
