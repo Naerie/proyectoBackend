@@ -7,12 +7,21 @@ class PropiedadAdmin(admin.ModelAdmin):
     list_display =[
         'titulo',
         'thumb',
-        'nBanos',
+        'descripcion',
         'nHabitaciones',
+        'nBanos',
         'superficie',
+        'superficieConstruida',
         'ubicacion',
         'precio',
-        'descripcion'
+        'moneda',
+        'fecha',
+        'conserje',
+        'logia',
+        'amoblado',
+        'estacionamiento',
+        'nEstacionamientos',
+        'piscina'
     ]
 
 admin.site.register(Propiedad, PropiedadAdmin)
