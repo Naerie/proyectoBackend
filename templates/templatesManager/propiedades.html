@@ -9,6 +9,16 @@
 <a href="{% url 'registro-propiedades' %}" class="btn btn-primary btn-lg">
   Agregar propiedades
 </a>
+<div class="container">
+  <div class="row">
+    <!-- card start -->
+    {% for p in propiedades %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-0 rounded-3">
+          <!-- Imagen principal -->
+
+            <img src="{{ p.thumb.url }}" class="card-img-top" alt="{{ p.titulo }}">
+
 
 <div class="row mt-5">
 {% for p in propiedades %}
