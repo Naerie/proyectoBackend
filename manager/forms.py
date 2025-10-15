@@ -9,55 +9,82 @@ class FormRegistrarP(forms.ModelForm):
             'titulo': 'Título de la propiedad:',
             'descripcion': 'Descripción:',
             'thumb': 'Imagen principal:',            
-            'carrusel': 'Imágenes adicionales:',            
             'nBanos': 'Número de baños:',                            
             'nHabitaciones': 'Número de habitaciones:',            
             'ubicacion': 'Dirección:',                      
-            'superficie': 'Superficie en m²:',            
-            'precio': 'Precio:'        
-                }
+            'superficie': 'Superficie total:',            
+            'precio': 'Precio:',
+            'superficieConstruida': 'Superficie construida:',
+            'nEstacionamientos': 'Número de estacionamientos:',  
+            'moneda': '',
+            'estacionamiento': 'Estacionamiento',
+            'piscina': 'Piscina',
+            'conserje': 'Conserje',
+            'logia': 'Logia',
+            'amoblado': 'Amoblado'
+        }
         widgets = {
             'titulo': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Ingresa el título de la propiedad'
+                'class': 'form-control', 
+                'placeholder': 'Ingresa el título'
             }),
             'thumb': forms.ClearableFileInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Selecciona la imagen principal'
             }),
-            'carrusel': forms.ClearableFileInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Selecciona imágenes adicionales',
-            }),
-            'nBanos': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Número de baños',
-                'min': 0
-            }),
-            'nHabitaciones': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Número de habitaciones',
-                'min': 0
-            }),
-            'superficie': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Superficie en m²',
-                'min': 0,
-            }),
-            'ubicacion': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Ej: Av. Manuel Montt 123'
-            }),
-            'precio': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Precio',
-                'min': 0,
-            }),
             'descripcion': forms.Textarea(attrs={
-                'class': 'form-control',
+                'class': 'form-control',  
                 'placeholder': 'Describa la propiedad',
                 'rows': 4
             }),
+            'nBanos': forms.Select(attrs={
+                'class': 'form-select'
+            }),
+            'nHabitaciones': forms.Select(attrs={
+                'class': 'form-select'
+            }),
+            'ubicacion': forms.TextInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Ej: Av. Manuel Montt 123'
+            }),
+            'superficie': forms.NumberInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Ej: 100',
+                'min': 0
+            }),
+            'superficieConstruida': forms.NumberInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Ej: 100',
+                'min': 0
+            }),
+            'precio': forms.NumberInput(attrs={
+                'class': 'form-control',  
+                'placeholder': 'Precio',
+                'min': 0
+            }),
+            'moneda': forms.RadioSelect(attrs={
+                'class': 'form-check-input'
+            }),
+            'nEstacionamientos': forms.Select(attrs={
+                'class': 'form-select'
+            }),
+            'estacionamiento': forms.CheckboxInput(attrs={
+                'class': 'form-check-input'
+            }),
+            'piscina': forms.CheckboxInput(attrs={
+                'class': 'form-check-input'
+            }),
+            'conserje': forms.CheckboxInput(attrs={
+                'class': 'form-check-input'
+            }),
+            'logia': forms.CheckboxInput(attrs={
+                'class': 'form-check-input'
+            }),
+            'amoblado': forms.CheckboxInput(attrs={
+                'class': 'form-check-input'
+            }),
+
+
         }
 
 

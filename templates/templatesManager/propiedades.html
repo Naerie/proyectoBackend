@@ -1,13 +1,12 @@
-{%extends 'templatesManager/base-admin.html'%}
-{%load static%}
-{%block title %}PROPIEDADES{%endblock%}
+{% extends 'templatesManager/base-admin.html' %}
+{% block title %}PROPIEDADES{% endblock %}
 
 {% block content %}
-<h2>Gestion de propiedades</h2>
-<p class="text-muted">Panel de gestion de propiedades.</p>
+<h2>Gestión de propiedades</h2>
+<p class="text-muted">Panel de gestión de propiedades.</p>
 
-<a href="{% url 'registro-propiedades' %}" class="btn btn-primary btn-lg">
-  Agregar propiedades
+<a href="{% url 'registro-propiedades' %}" class="btn btn-primary btn-lg mb-4">
+  Agregar propiedad
 </a>
 <div class="container">
   <div class="row">
@@ -20,40 +19,74 @@
             <img src="{{ p.thumb.url }}" class="card-img-top" alt="{{ p.titulo }}">
 
 
-<div class="row mt-5">
-{% for p in propiedades %}
-<div class="col-md-4 mb-4 mt-4">
-  <div class="card h-100" style="width: 18rem;">
-    <img src="{% static p.thumb %}" class="card-img-top" alt="{{ p.titulo }}">
-    <div class="card-body">
-      <h5 class="card-title">{{ p.titulo }}</h5>
-      <p class="card-text">{{ p.direccion }}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-    </ul>
-    <div class="card-body">
-      <!-- Botones que abren los modals -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalActualizar{{ p.id }}">
-        Actualizar
-      </button>
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalEliminar{{ p.id }}">
-        Eliminar
-      </button>
-    </div>
+          <!-- body card -->
+          <div class="card-body">
+            <h5 class="card-title">{{ p.titulo }}</h5>
+
+            {% if p.ubicacion %}
+              <p class="text-muted small mb-2">
+                <i class="bi bi-geo-alt"></i> {{ p.ubicacion }}
+              </p>
+            {% endif %}
+
+            {% if p.descripcion %}
+              <p class="card-text text-secondary small mb-3">{{ p.descripcion|truncatechars:120 }}</p>
+            {% endif %}
+
+            <ul class="list-unstyled small mb-3">
+              {% if p.nHabitaciones %}
+                <li><i class="bi bi-door-closed"></i> Habitaciones: {{ p.nHabitaciones }}</li>
+              {% endif %}
+              {% if p.nBanos %}
+                <li><i class="bi bi-droplet"></i> Baños: {{ p.nBanos }}</li>
+              {% endif %}
+              {% if p.superficie %}
+                <li><i class="bi bi-rulers"></i> Total: {{ p.superficie }} m²</li>
+              {% endif %}
+              {% if p.superficieConstruida %}
+                <li><i class="bi bi-building"></i> Construida: {{ p.superficieConstruida }} m²</li>
+              {% endif %}
+            </ul>
+
+            {% if p.conserje or p.logia or p.amoblado or p.estacionamiento or p.piscina %}
+              <h6 class="mb-1">Extras:</h6>
+              <ul class="list-inline small text-muted mb-3">
+                {% if p.conserje %}<li class="list-inline-item"><i class="bi bi-person-badge"></i> Conserje</li>{% endif %}
+                {% if p.logia %}<li class="list-inline-item"><i class="bi bi-basket"></i> Logia</li>{% endif %}
+                {% if p.amoblado %}<li class="list-inline-item"><i class="bi bi-lamp"></i> Amoblado</li>{% endif %}
+                {% if p.estacionamiento %}
+                  <li class="list-inline-item"><i class="bi bi-car-front"></i> {{ p.nEstacionamientos }} estacionamiento{{ p.nEstacionamientos|pluralize }}</li>
+                {% endif %}
+                {% if p.piscina %}<li class="list-inline-item"><i class="bi bi-water"></i> Piscina</li>{% endif %}
+              </ul>
+            {% endif %}
+
+            {% if p.precio %}
+              <p class="fw-bold mb-1">
+                <i class="bi bi-currency-exchange"></i> {{ p.moneda }} {{ p.precio }}
+              </p>
+            {% endif %}
+            {% if p.fecha %}
+              <p class="text-muted small mb-3"><i class="bi bi-calendar-event"></i> {{ p.fecha|date:"d/m/Y" }}</p>
+            {% endif %}
+
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalActualizar{{ p.id }}">
+                <i class="bi bi-pencil-square"></i> Actualizar
+              </button>
+              <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalEliminar{{ p.id }}">
+                <i class="bi bi-trash3"></i> Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+          <!-- MODALS -->
+        {% include 'templatesManager/modal-eliminar.html' with item=p %}
+        {% include 'templatesManager/modal-actualizar.html' with item=p %}
+      </div>
+    {% empty %}
+      <p>No hay propiedades disponibles.</p>
+    {% endfor %}
   </div>
 </div>
-
-<!-- Incluimos los modals con el item -->
-{% include 'templatesManager/modal-eliminar.html' with item=p %}
-{% include 'templatesManager/modal-actualizar.html' with item=p %}
-
-{% empty %}
-  <p>No hay propiedades disponibles.</p>
-{% endfor %}
-</div>
-
 {%endblock%}
-
