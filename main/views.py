@@ -1,22 +1,29 @@
-from django.shortcuts import render ,redirect
-from datos import propiedades
-from datos import about
+from django.shortcuts import render ,redirect,get_object_or_404
 from django.http import JsonResponse
-from datos import operacionPropiedad, tiposPropiedad, comuna
 from main import forms
+from manager.models import Propiedad
+
+#datos.py
+#from datos import propiedades
+from datos import about
+from datos import operacionPropiedad, tiposPropiedad, comuna
 
 
 # Create your views here.
 def index(request):
+    propiedades = Propiedad.objects.all().order_by('-fecha')
     data = {
         'propiedades': propiedades,
-        'operacion': operacionPropiedad,
-        'tipos_inmueble': tiposPropiedad,
-        'comuna': comuna,
+        # 'operacion': operacionPropiedad,
+        # 'tipos_inmueble': tiposPropiedad,
+        # 'comuna': comuna,
     }
     
     return render(request, 'templatesMain/home.html', data)
 
+def propiedad(request, id):
+    propiedad = get_object_or_404(Propiedad, id=id)
+    return render(request, 'templatesMain/propiedad.html', {'propiedad': propiedad})
 
 def sobreNosotros(request):
     return render (request, 'templatesMain/nosotros.html', about)
@@ -33,8 +40,6 @@ def contacto(request):
     data = {'form' : formulario}
     return render(request, 'templatesMain/contacto.html', data)
 
-def propiedad(request):
-    return render(request, 'templatesMain/propiedad.html', {'propiedades':propiedades})
 
 def contactoSuccess(request):
     return render(request, 'templatesMain/contacto-success.html')

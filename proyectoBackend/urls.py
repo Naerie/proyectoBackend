@@ -19,13 +19,16 @@ from django.urls import path
 from manager import views as mViews
 from main import views as mainViews
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # cliente
     path('', mainViews.index, name="home"),
     path('nosotros/', mainViews.sobreNosotros, name="about"),
     path('contacto/',mainViews.contacto, name="contacto"),
-    path('propiedad/', mainViews.propiedad, name='propiedad'),
+    path('propiedad/<int:id>/', mainViews.propiedad, name='detalle-propiedad'),
     path('contacto-success/', mainViews.contactoSuccess, name='c-success'),
 
     # admin
@@ -39,3 +42,6 @@ urlpatterns = [
     path('interes/', mViews.Interes, name='tabla-interes'),
     path('subscripciones/', mViews.verSubscripciones, name='ver-subscripciones')
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

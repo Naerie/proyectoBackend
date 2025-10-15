@@ -3,6 +3,10 @@ from main.models import Contacto
 # Register your models here.
 
 class ContactoAdmin(admin.ModelAdmin):
-    list_display = ['nombre', 'email', 'nTelefono', 'mensaje']
+    list_display = ['nombre', 
+                    'email', 
+                    'nTelefono', 
+                    'mensaje', 
+                    'fecha']
 
 admin.site.register(Contacto, ContactoAdmin)
