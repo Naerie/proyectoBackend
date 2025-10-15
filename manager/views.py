@@ -14,7 +14,7 @@ from datos import subs
 
 
 def registro(request):
-    formulario = forms.FormRegistrarP().order_by('-fecha')
+    formulario = forms.FormRegistrarP()
     if request.method == 'POST':
         formulario = forms.FormRegistrarP(request.POST, request.FILES)
         if formulario.is_valid():

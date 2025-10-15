@@ -1,6 +1,6 @@
 from django import forms
 import re
-from main.models import Contacto
+from main.models import Contacto, Cliente
 
 
 class FormContacto(forms.ModelForm):
@@ -50,3 +50,28 @@ class FormContacto(forms.ModelForm):
             if not re.fullmatch(pat, telefono):
                 raise forms.ValidationError('Numero de telefono inválido.')
         return telefono
+
+
+class FormCliente(forms.ModelForm):
+    class Meta:
+        model = Cliente
+        exclude = ['fechaCliente']
+        labels= {
+            'nombreCliente': 'Nombre:',
+            'emailCliente': 'Correo electronico:',
+            'nTelefonoCliente': 'Número de telefono'
+        }
+        widget = {
+            'nombreCliente': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Ingresa tu nombre'
+            }),
+            'emailCliente': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Ej: Correo@gmail.com'
+            }),
+            'nTelefonoCliente': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': '+56 9 12345678'
+            })
+        }
