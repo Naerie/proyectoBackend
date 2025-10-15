@@ -25,12 +25,10 @@ class Propiedad(models.Model):
     conserje = models.BooleanField(default=False)
     logia = models.BooleanField(default=False)
     amoblado = models.BooleanField(default=False)
-        #Casa
-    pisosCasa = models.IntegerField(choices=CANTIDADES, default=1)
         #Ambos
     estacionamiento = models.BooleanField(default=False)
     nEstacionamientos = models.IntegerField(choices=CANTIDADES, default=1)
-    pscina = models.BooleanField(default=False)
+    piscina = models.BooleanField(default=False)
 
 
 

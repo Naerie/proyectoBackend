@@ -16,13 +16,12 @@ class FormRegistrarP(forms.ModelForm):
             'precio': 'Precio:',
             'superficieConstruida': 'Superficie construida en m²:',
             'nEstacionamientos': 'Número de estacionamientos:',  
-            'pisosCasa': 'Número de pisos:',          
             'moneda': '',
-            'estacionamiento': '',
-            'pscina': '',
-            'conserje': '',
-            'logia': '',
-            'amoblado': '',
+            'estacionamiento': 'Estacionamiento',
+            'piscina': 'Piscina',
+            'conserje': 'Conserje',
+            'logia': 'Logia',
+            'amoblado': 'Amoblado'
         }
         widgets = {
             'titulo': forms.TextInput(attrs={
@@ -69,13 +68,10 @@ class FormRegistrarP(forms.ModelForm):
             'nEstacionamientos': forms.Select(attrs={
                 'class': 'form-select'
             }),
-            'pisosCasa': forms.Select(attrs={
-                'class': 'form-select'
-            }),
             'estacionamiento': forms.CheckboxInput(attrs={
                 'class': 'form-check-input'
             }),
-            'pscina': forms.CheckboxInput(attrs={
+            'piscina': forms.CheckboxInput(attrs={
                 'class': 'form-check-input'
             }),
             'conserje': forms.CheckboxInput(attrs={
