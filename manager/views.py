@@ -14,7 +14,7 @@ from datos import subs
 
 
 def registro(request):
-    formulario = forms.FormRegistrarP()
+    formulario = forms.FormRegistrarP().order_by('-fecha')
     if request.method == 'POST':
         formulario = forms.FormRegistrarP(request.POST, request.FILES)
         if formulario.is_valid():
@@ -26,7 +26,7 @@ def registro(request):
 
 
 def verPropiedades(request):
-    propiedades = Propiedad.objects.all()
+    propiedades = Propiedad.objects.all().order_by('-fecha')
     formulario = forms.FormRegistrarP() #para el modal de actualizar
     if request.method == 'POST':
         formulario = forms.FormRegistrarP(request.POST, request.FILES)

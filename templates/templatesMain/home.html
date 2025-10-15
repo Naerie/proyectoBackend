@@ -80,32 +80,35 @@
 
     <!-- FIN BARRA DE BUSQUEDA -->
     <!-- grid cards -->
-<div class="row mt-5">
-  <!-- ciclo for para la creacion de tarjetas por propiedad -->
-    {% for p in propiedades %}
-    <div class="col-md-4 mb-4">
-    <!-- CARD imagen y datos desde la vista -->
-      <div class="card h-100" style="width: 18rem;">
-        <img src="{% static p.thumb %}" class="card-img-top" alt="{{ p.titulo }}">
+<div class="row">
+  {% for p in propiedades %}
+  <div class="col-md-4 mb-4">
+    <a href="{% url 'detalle-propiedad' p.id %}" class="text-decoration-none text-dark">
+      <div class="card h-100 shadow-sm border-0 rounded-3">
+        <!-- Imagen principal -->
+        {% if p.thumb %}
+          <img src="{{ p.thumb.url }}" class="card-img-top" alt="{{ p.titulo }}">
+        {% else %}
+          <img src="{% static 'img/no-image.png' %}" class="card-img-top" alt="Sin imagen">
+        {% endif %}
+
         <div class="card-body">
           <h5 class="card-title">{{ p.titulo }}</h5>
-          <p class="card-text">{{ p.direccion }}</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-          <a href="{% url 'propiedad' %}" class="stretched-link"></a>
+          {% if p.ubicacion %}
+            <p class="text-muted small mb-2"><i class="bi bi-geo-alt"></i> {{ p.ubicacion }}</p>
+          {% endif %}
+          {% if p.precio %}
+            <p class="fw-bold text-primary mb-0">
+              {{ p.moneda }} {{ p.precio }}
+            </p>
+          {% endif %}
         </div>
       </div>
-    </div>
-    {% empty %}
-      <p>No hay propiedades disponibles.</p>
-    {% endfor %}
+    </a>
+  </div>
+  {% empty %}
+  <p>No hay propiedades disponibles.</p>
+  {% endfor %}
 </div>
 
 <!-- SECCION DE SUSCRIPCION -->
