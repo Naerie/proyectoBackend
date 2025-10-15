@@ -3,10 +3,11 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from manager import forms
 from main.models import Contacto
+from manager.models import Propiedad
 
 
 #archivo datos.py ir reemplazando 
-from datos import propiedades
+#from datos import propiedades
 from datos import clientes
 from datos import tiposPropiedad, estadosPropiedad, comuna
 from datos import subs
@@ -25,9 +26,10 @@ def registro(request):
 
 
 def verPropiedades(request):
+    propiedades = Propiedad.objects.all()
     formulario = forms.FormRegistrarP() #para el modal de actualizar
     if request.method == 'POST':
-        formulario = forms.FormRegistrarP(request.POST)
+        formulario = forms.FormRegistrarP(request.POST, request.FILES)
         if formulario.is_valid():
             print('formulario de registro de propiedades valido')
     data = {'form' : formulario,
