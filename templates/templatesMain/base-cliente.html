@@ -1,93 +1,73 @@
-<!-- cargar static -->
 {% load static %}
 
-<!-- templates/base-cliente.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- block para poder cambiar el titulo segun la pagina -->
-    <title>{% block title %}SERVICOPIAPO {% endblock %}</title>
-    <!-- bootstrap link css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}SERVICOPIAPO{% endblock %}</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 </head>
 <body>
-    <!-- SCRIPT JS DE BOOTSTRAP -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-{% include 'templatesMain/nav-cliente.html' %}
+  <!-- Navbar -->
+  {% include 'templatesMain/nav-cliente.html' %}
 
-<!-- CONTENIDO dinamico con class de boostrap -->
-  <section class="container mt-4">
+  <!-- Main Content -->
+  <section class="container mt-5 mb-5">
     {% block content %}
     {% endblock %}
-</div>
-</section>
+  </section>
 
-<!-- footer -->
-  <footer class="bg-primary text-white text-center text-lg-start">
-  <!-- Grid container -->
-  <div class="container p-4">
-    <!--Grid row-->
-    <div class="row">
-      <!--Grid column-->
-      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-        <h5 class="text-uppercase">Footer Content</h5>
+  <!-- Footer -->
+  <footer class="footer text-white pt-5 pb-4">
+    <div class="container text-md-start">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 mb-4">
+          <h5 class="fw-bold mb-3 text-uppercase">SERVICOPIAPO</h5>
+          <p class="text-light opacity-75">
+            Somos expertos en corretaje de propiedades en la región de Atacama. 
+            Brindamos un servicio confiable y transparente para ayudarle a encontrar el hogar o la inversión ideal.
+          </p>
+        </div>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-          molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-          voluptatem veniam, est atque cumque eum delectus sint!
-        </p>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h6 class="fw-bold mb-3 text-uppercase">Enlaces</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="footer-link">Inicio</a></li>
+            <li><a href="#" class="footer-link">Propiedades</a></li>
+            <li><a href="#" class="footer-link">Nosotros</a></li>
+            <li><a href="#" class="footer-link">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h6 class="fw-bold mb-3 text-uppercase">Contacto</h6>
+          <ul class="list-unstyled">
+            <li><i class="bi bi-geo-alt-fill me-2"></i> Copiapó, Chile</li>
+            <li><i class="bi bi-telephone-fill me-2"></i> +56 9 11111111</li>
+            <li><i class="bi bi-envelope-fill me-2"></i> svcontacto@gmail.com</li>
+          </ul>
+        </div>
       </div>
-      <!--Grid column-->
-
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase">Links</h5>
-
-        <ul class="list-unstyled mb-0">
-          <li>
-            <a href="#!" class="text-white">Link 1</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 2</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 3</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 4</a>
-          </li>
-        </ul>
-      </div>
-      <!--Grid column-->
-
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase mb-0">Links</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <a href="#!" class="text-white">Link 1</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 2</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 3</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 4</a>
-          </li>
-        </ul>
-      </div>
-      <!--Grid column-->
     </div>
-    <!--Grid row-->
-  </div>
+    <div class="text-center py-3 mt-4 border-top border-light">
+      © 2025 SERVICOPIAPO. Todos los derechos reservados.
+    </div>
+  </footer>
 
-</footer>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </body>
 </html>

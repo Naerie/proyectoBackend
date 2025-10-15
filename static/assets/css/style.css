@@ -1,0 +1,76 @@
+:root {
+    --azul: #00285D;
+    --naranjo: #D45831;
+    --blanco: #ffffff;
+    --gris-fondo: #f5f7fa;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--gris-fondo);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: var(--azul);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    color: var(--blanco) !important;
+    letter-spacing: 0.5px;
+}
+
+.navbar .nav-link {
+    color: var(--blanco);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0 8px;
+    transition: color 0.3s ease, border-bottom 0.2s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--naranjo);
+    border-bottom: 2px solid var(--naranjo);
+}
+
+.dropdown-menu {
+    font-size: 0.95rem;
+}
+
+.dropdown-item:hover {
+    background-color: var(--naranjo);
+    color: var(--blanco);
+}
+
+/* ======== CONTENT ======== */
+section.container,
+section.container-fluid {
+    max-width: 100%;
+    padding: 3rem 4rem;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* ======== FOOTER ======== */
+.footer {
+    background-color: var(--azul);
+}
+
+.footer-link {
+    color: #ffffffcc;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: var(--naranjo);
+}
+
+.footer i {
+    color: var(--naranjo);
+}
