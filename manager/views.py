@@ -2,13 +2,13 @@ from django.shortcuts import render
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from manager import forms
-from main.models import Contacto
+from main.models import Contacto, Cliente
 from manager.models import Propiedad
 
 
 #archivo datos.py ir reemplazando 
 #from datos import propiedades
-from datos import clientes
+# from datos import clientes
 from datos import tiposPropiedad, estadosPropiedad, comuna
 from datos import subs
 
@@ -54,6 +54,7 @@ def cerrar_sesion(request):
     return redirect('login-admin')
 
 def Interes(request):
+    clientes = Cliente.objects.all()
     return render(request, 'templatesManager/interes.html', {'clientes':clientes})
 
 def verSubscripciones(request):
