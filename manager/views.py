@@ -20,7 +20,7 @@ def registro(request):
         if formulario.is_valid():
             print('formulario de registro de propiedades valido')
             formulario.save()
-            return redirect('home-manager')
+            return redirect('listado-propiedades')
     data = {'form' : formulario}
     return render(request, 'templatesManager/registrarPropiedades.html', data)
 
@@ -30,7 +30,7 @@ def verPropiedades(request):
     for prop in Propiedad.objects.all():
         propiedades.append({
             'obj': prop,
-            'form': forms.FormRegistrarP(instance=prop)  # formulario precargado
+            'form': forms.FormRegistrarP(instance=prop)  
         })
 
     return render(request, 'templatesManager/propiedades.html', {
