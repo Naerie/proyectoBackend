@@ -69,6 +69,13 @@ def verMensajes(request):
     contacto = Contacto.objects.all()
     return render(request, 'templatesManager/contacto-admin.html', {'contacto':contacto})
 
+def eliminarMensaje(request, id):
+    propiedad = get_object_or_404(Contacto, id=id)
+    propiedad.delete()  
+    return redirect('ver-contacto')  
+
+
+
 def gestionar(request):
     return render(request, 'templatesManager/gestionar.html')
 

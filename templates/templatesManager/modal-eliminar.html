@@ -1,17 +1,17 @@
 <!-- modal reutilizable desde include pasar tipo y url_name -->
-<div class="modal fade" id="modalEliminar{{ item.obj.id }}" tabindex="-1" aria-labelledby="modalEliminarLabel{{ item.obj.id }}" aria-hidden="true">
+<div class="modal fade" id="modalEliminar{{ item.id }}" tabindex="-1" aria-labelledby="modalEliminarLabel{{ item.id }}" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalEliminarLabel{{ item.obj.id }}">Eliminar {{ tipo|default:"elemento" }}</h5>
+        <h5 class="modal-title" id="modalEliminarLabel{{ item.id }}">Eliminar {{ tipo|default:"elemento" }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
-        ¿Estás seguro que deseas eliminar este {{ tipo|default:"elemento" }}: <strong>{{ item.obj.titulo }}</strong>?
+        ¿Estás seguro que deseas eliminar este {{ tipo|default:"elemento" }}: <strong>{{ item.titulo }}</strong>?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <form method="POST" action="{% url url_name item.obj.id %}">
+        <form method="POST" action="{% url url_name item.id %}">
           {% csrf_token %}
           <button type="submit" class="btn btn-danger">Eliminar</button>
         </form>
