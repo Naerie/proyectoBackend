@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from manager import forms
@@ -26,14 +26,31 @@ def registro(request):
 
 
 def verPropiedades(request):
-    propiedades = Propiedad.objects.all()
-    formulario = forms.FormRegistrarP() #para el modal de actualizar
+    propiedades = []
+    for prop in Propiedad.objects.all():
+        propiedades.append({
+            'obj': prop,
+            'form': forms.FormRegistrarP(instance=prop)  # formulario precargado
+        })
+
+    return render(request, 'templatesManager/propiedades.html', {
+        'propiedades': propiedades
+    })
+
+
+def actualizarPropiedades(request, id):
+    # ACTUALIZAR
+    propiedad = get_object_or_404(Propiedad, id=id)
     if request.method == 'POST':
-        formulario = forms.FormRegistrarP(request.POST, request.FILES)
-        if formulario.is_valid():
-            print('formulario de registro de propiedades valido')
-    data = {'form' : formulario,
-            'propiedades':propiedades}
+        form = forms.FormRegistrarP(request.POST, request.FILES, instance=propiedad)
+        if form.is_valid():
+            form.save()
+            return redirect('listado-propiedades') 
+    else:
+        form = forms.FormRegistrarP(instance=propiedad)
+
+    data = {'form' : form,
+            'propiedad':propiedad}
     return render(request, 'templatesManager/propiedades.html', data)
 
 def logIn(request):
