@@ -83,7 +83,7 @@
 <div class="row">
   {% for p in propiedades %}
   <div class="col-md-4 mb-4">
-    <a href="{% url 'detalle-propiedad' p.id %}" class="text-decoration-none text-dark">
+    <a href="{% url 'detalle-propiedad' p.slug %}" class="text-decoration-none text-dark">
       <div class="card h-100 shadow-sm border-0 rounded-3">
         <!-- Imagen principal -->
           <img src="{{ p.thumb.url }}" class="card-img-top" alt="{{ p.titulo }}">
