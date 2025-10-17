@@ -69,6 +69,13 @@ def verMensajes(request):
     contacto = Contacto.objects.all()
     return render(request, 'templatesManager/contacto-admin.html', {'contacto':contacto})
 
+def eliminarMensaje(request, id):
+    propiedad = get_object_or_404(Contacto, id=id)
+    propiedad.delete()  
+    return redirect('ver-contacto')  
+
+
+
 def gestionar(request):
     return render(request, 'templatesManager/gestionar.html')
 
@@ -79,6 +86,11 @@ def cerrar_sesion(request):
 def Interes(request):
     clientes = Cliente.objects.all()
     return render(request, 'templatesManager/interes.html', {'clientes':clientes})
+
+def eliminarCliente(request, id): #cambiar por interes luego?
+    propiedad = get_object_or_404(Cliente, id=id)
+    propiedad.delete()  
+    return redirect('tabla-interes') 
 
 def verSubscripciones(request):
     return render(request, 'templatesManager/subscripciones.html', {'subscripciones':subs})
