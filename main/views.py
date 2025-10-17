@@ -21,9 +21,8 @@ def index(request):
     
     return render(request, 'templatesMain/home.html', data)
 
-def propiedad(request, id):
-    propiedad = get_object_or_404(Propiedad, id=id)
-    propiedades = Propiedad.objects.get(id=id)
+def propiedad(request, slug):
+    propiedad = get_object_or_404(Propiedad, slug=slug)
     formulario = forms.FormCliente()
     if request.method == 'POST':
         formulario = forms.FormCliente(request.POST)
@@ -32,7 +31,6 @@ def propiedad(request, id):
             return redirect('c-success')
     data ={
         'propiedad':propiedad,
-        'propiedades':propiedades,
         'form':formulario
     }
     return render(request, 'templatesMain/propiedad.html', data)
