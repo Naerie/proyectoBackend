@@ -40,10 +40,10 @@ urlpatterns = [
     path('propiedades/eliminar/<int:id>/', mViews.eliminarPropiedad, name='eliminar-propiedad'),
     path('mensajes/', mViews.verMensajes, name='ver-contacto'),
     path('mensajes/eliminar/<int:id>/', mViews.eliminarMensaje, name='eliminar-contacto'),
-
     path('gestion/', mViews.gestionar, name='gestion'),
     path('logout/', mViews.cerrar_sesion, name='logout'),
     path('interes/', mViews.Interes, name='tabla-interes'),
+    path('interes/eliminar/<int:id>/', mViews.eliminarCliente, name='eliminar-cliente'),
     path('subscripciones/', mViews.verSubscripciones, name='ver-subscripciones')
 ]
 

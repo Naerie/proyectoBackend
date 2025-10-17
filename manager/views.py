@@ -87,5 +87,10 @@ def Interes(request):
     clientes = Cliente.objects.all()
     return render(request, 'templatesManager/interes.html', {'clientes':clientes})
 
+def eliminarCliente(request, id): #cambiar por interes luego?
+    propiedad = get_object_or_404(Cliente, id=id)
+    propiedad.delete()  
+    return redirect('tabla-interes') 
+
 def verSubscripciones(request):
     return render(request, 'templatesManager/subscripciones.html', {'subscripciones':subs})
