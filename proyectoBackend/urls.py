@@ -37,6 +37,7 @@ urlpatterns = [
     path('registroPropiedades/', mViews.registro, name="registro-propiedades"),
     path('propiedades/', mViews.verPropiedades, name="listado-propiedades"),
     path('propiedades/actualizar/<int:id>/', mViews.actualizarPropiedades, name='actualizar-propiedad'),
+    path('propiedades/eliminar/<int:id>/', mViews.eliminarPropiedad, name='eliminar-propiedad'),
     path('mensajes/', mViews.verMensajes, name='ver-contacto'),
     path('gestion/', mViews.gestionar, name='gestion'),
     path('logout/', mViews.cerrar_sesion, name='logout'),

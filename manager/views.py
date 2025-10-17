@@ -30,12 +30,18 @@ def verPropiedades(request):
     for prop in Propiedad.objects.all():
         propiedades.append({
             'obj': prop,
-            'form': forms.FormRegistrarP(instance=prop)  
+            'form': forms.FormRegistrarP(instance=prop)  # formulario precargado
         })
 
     return render(request, 'templatesManager/propiedades.html', {
         'propiedades': propiedades
     })
+
+
+def eliminarPropiedad(request, id):
+    propiedad = get_object_or_404(Propiedad, id=id)
+    propiedad.delete()  
+    return redirect('listado-propiedades')  
 
 
 def actualizarPropiedades(request, id):
