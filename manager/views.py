@@ -134,6 +134,30 @@ def eliminarGestion(request, id, campo):
     objeto.delete()
     return redirect('gestion')
 
+def actualizarGestion(request, campo, id):
+    if campo == 'tipo':
+        objeto = get_object_or_404(TiposPropiedades, id=id)
+        form = forms.FormTiposPropiedades
+    elif campo == 'estado':
+        objeto = get_object_or_404(EstadosPropiedades, id=id)
+        form = forms.FormEstadosPropiedades
+    elif campo == 'operacion':
+        objeto = get_object_or_404(OperacionesPropiedades, id=id)
+        form = forms.FormOperacionesPropiedades
+    elif campo == 'comuna':
+        objeto = get_object_or_404(Comunas, id=id)
+        form = forms.FormComunas
+    else:
+        return redirect('gestion')
+
+    if request.method == 'POST':
+        form = form(request.POST, instance=objeto)
+        if form.is_valid():
+            form.save()
+            return redirect('gestion')
+    else:
+        form = form(instance=objeto)
+
 def cerrar_sesion(request):
     logout(request)
     return redirect('login-admin')

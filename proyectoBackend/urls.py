@@ -42,7 +42,7 @@ urlpatterns = [
     path('mensajes/eliminar/<int:id>/', mViews.eliminarMensaje, name='eliminar-contacto'),
     path('gestion/', mViews.gestionar, name='gestion'),
     path('gestion/eliminar/<str:campo>/<int:id>/', mViews.eliminarGestion, name='eliminar-gestion'),
-
+    path('gestion/actualizar/<str:campo>/<int:id>/', mViews.actualizarGestion, name='actualizar-gestion'),
     path('logout/', mViews.cerrar_sesion, name='logout'),
     path('interes/', mViews.Interes, name='tabla-interes'),
     path('interes/eliminar/<int:id>/', mViews.eliminarCliente, name='eliminar-cliente'),
