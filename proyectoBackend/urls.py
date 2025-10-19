@@ -41,7 +41,7 @@ urlpatterns = [
     path('mensajes/', mViews.verMensajes, name='ver-contacto'),
     path('mensajes/eliminar/<int:id>/', mViews.eliminarMensaje, name='eliminar-contacto'),
     path('gestion/', mViews.gestionar, name='gestion'),
-    path('gestion/eliminar/<int:id>/', mViews.eliminarTipo, name='eliminar-tipo'),
+    path('gestion/eliminar/<str:campo>/<int:id>/', mViews.eliminarGestion, name='eliminar-gestion'),
 
     path('logout/', mViews.cerrar_sesion, name='logout'),
     path('interes/', mViews.Interes, name='tabla-interes'),

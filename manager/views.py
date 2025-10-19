@@ -119,10 +119,20 @@ def gestionar(request):
     }
     return render(request, 'templatesManager/gestionar.html', data)
 
-def eliminarTipo(request, id): #cambiar por interes luego?
-    tipo = get_object_or_404(TiposPropiedades, id=id)
-    tipo.delete()  
-    return redirect('gestion') 
+def eliminarGestion(request, id, campo): 
+    if campo == 'tipo':
+        objeto = get_object_or_404(TiposPropiedades, id=id)
+    elif campo == 'estado':
+        objeto = get_object_or_404(EstadosPropiedades, id=id)
+    elif campo == 'operacion':
+        objeto = get_object_or_404(OperacionesPropiedades, id=id)
+    elif campo == 'comuna':
+        objeto = get_object_or_404(Comunas, id=id)
+    else:
+        return redirect('gestion')
+    
+    objeto.delete()
+    return redirect('gestion')
 
 def cerrar_sesion(request):
     logout(request)
