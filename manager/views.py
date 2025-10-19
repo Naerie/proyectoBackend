@@ -133,6 +133,7 @@ def eliminarGestion(request, id, campo):
     
     objeto.delete()
     return redirect('gestion')
+    
 
 def actualizarGestion(request, campo, id):
     if campo == 'tipo':
@@ -157,6 +158,7 @@ def actualizarGestion(request, campo, id):
             return redirect('gestion')
     else:
         form = form(instance=objeto)
+        return redirect('gestion')
 
 def cerrar_sesion(request):
     logout(request)

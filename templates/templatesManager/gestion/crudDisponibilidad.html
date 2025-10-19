@@ -25,9 +25,8 @@
                 <td class="text-end">
                   <div class="btn-group" role="group">
                     <!-- Botón Actualizar -->
-                  <button type="button" class="btn btn-outline-primary btn-sm" >
+                  <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalActualizarestado{{ e.id }}">
                     <i class="bi bi-pencil-square"></i> Actualizar
-                    </a>
 
                     <!-- Botón Eliminar -->
                     <form method="POST" action="" style="display:inline;">
@@ -40,13 +39,14 @@
                 </td>
               </tr>
               {% include 'templatesManager/modal-eliminar.html' with item=e tipo="registro" url_name="eliminar-gestion" campo='estado' %}
-
+              {% include 'templatesManager/gestion/modal-editar.html' with item=e url_name="actualizar-gestion" campo='estado' label='estado' valor=e.estado titulo='Actualizar disponibilidad' %}
             {% empty %}
               <tr>
                 <td colspan="2" class="text-center text-muted">No hay registros.</td>
               </tr>
             {% endfor %}
           </tbody>
+          
           
         </table>
       </div>
