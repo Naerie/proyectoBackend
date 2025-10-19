@@ -13,3 +13,8 @@ class Cliente(models.Model):
     emailCliente = models.EmailField(max_length=50)
     nTelefonoCliente = models.CharField(max_length=15,blank=False)
     fechaCliente = models.DateField(auto_now_add=True)
+
+class Suscripcion(models.Model):
+    emailSus = models.EmailField(max_length=50, blank =False, unique=True)
+    fechaSus = models.DateField(auto_now_add=True)
+    estadoSus = models.BooleanField(default=True)

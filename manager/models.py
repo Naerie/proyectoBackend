@@ -40,6 +40,16 @@ class Propiedad(models.Model):
             self.slug = slugify(self.titulo)
         super().save(*args, **kwargs)
 
+# tablas gestion
+class TiposPropiedades(models.Model):
+    tipoPropiedad = models.CharField(max_length=50, blank=False,unique=True)
 
+class EstadosPropiedades(models.Model):
+    estado = models.CharField(max_length=50, blank=False,unique=True)
 
+class OperacionesPropiedades(models.Model):
+    operacion = models.CharField(max_length=50, blank=False,unique=True)
+
+class Comunas(models.Model):
+    comuna = models.CharField(max_length=50, blank=False,unique=True)
 
