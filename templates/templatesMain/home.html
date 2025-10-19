@@ -115,28 +115,21 @@
       <div class="card shadow-sm p-4 text-center">
         <h5 class="card-title mb-3">¡Suscríbete para recibir avisos de nuevas propiedades!</h5>
         <p class="card-text mb-4">Recibe información directamente en tu correo sobre propiedades nuevas, promociones y más.</p>
-        <form method="POST" action="#" id="formSuscripcion">
-            {% csrf_token %}
-          <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Tu correo electrónico" name="email" required>
-            <button class="btn btn-primary" type="submit">Suscribirme</button>
-          </div>
-          <small class="text-muted">Nunca compartiremos tu correo con terceros.</small>
+        <form method="POST" action="#" id="formSuscripcion" class="input-group mb-3">
+          {% csrf_token %}
+          {{ form.emailSus }}
+          <button class="btn btn-primary" type="submit">Suscribirme</button>
         </form>
+        {% if form.emailSus.errors %}
+          <div class="text-danger small mt-1">
+            {{ form.emailSus.errors }}
+          </div>
+        {% endif %}
+        <small class="text-muted">Nunca compartiremos tu correo con terceros.</small>
         <div id="mensajeSuscripcion" class="mt-2"></div>
       </div>
     </div>
   </div>
 </div>
-<script>
-  document.getElementById('formSuscripcion').addEventListener('submit', function(e){
-    e.preventDefault(); // evita que recargue la página
-    const email = this.email.value;
-    
-    if(email){
-      document.getElementById('mensajeSuscripcion').innerHTML = `<span class="text-success">¡Gracias por suscribirte!</span>`;
-      this.reset(); // limpia el input
-    }
-  });
-</script>
+
 {% endblock %}

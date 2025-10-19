@@ -1,6 +1,6 @@
 from django import forms
 import re
-from main.models import Contacto, Cliente
+from main.models import Contacto, Cliente, Suscripcion
 
 
 class FormContacto(forms.ModelForm):
@@ -61,7 +61,7 @@ class FormCliente(forms.ModelForm):
             'emailCliente': 'Correo electronico:',
             'nTelefonoCliente': 'Número de telefono'
         }
-        widget = {
+        widgets = {
             'nombreCliente': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Ingresa tu nombre'
@@ -75,3 +75,23 @@ class FormCliente(forms.ModelForm):
                 'placeholder': '+56 9 12345678'
             })
         }
+
+class FormSuscripcion(forms.ModelForm):
+    class Meta:
+        model = Suscripcion
+        fields = ['emailSus']
+        labels = {
+            'emailSus' : ''
+        }
+
+        widgets = {
+            'emailSus': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Tu correo electrónico'
+            })
+        }
+    def clean_emailSub(self):
+        email = self.cleaned_data.get('emailSus')
+        if Suscripcion.objects.filter(emailSus=email).exists():
+            raise forms.ValidationError("Ya estás suscrito.")
+        return email

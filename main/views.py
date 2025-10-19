@@ -12,11 +12,16 @@ from datos import operacionPropiedad, tiposPropiedad, comuna
 # Create your views here.
 def index(request):
     propiedades = Propiedad.objects.all().order_by('-fecha')
+    # subscripcion
+    formulario = forms.FormSubscripcion()
+    if request.method =='POST':
+        formulario = forms.FormSubscripcion(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('home')
     data = {
         'propiedades': propiedades,
-        # 'operacion': operacionPropiedad,
-        # 'tipos_inmueble': tiposPropiedad,
-        # 'comuna': comuna,
+        'form':formulario
     }
     
     return render(request, 'templatesMain/home.html', data)
