@@ -4,9 +4,7 @@ from main import forms
 from manager.models import Propiedad
 
 #datos.py
-#from datos import propiedades
 from datos import about
-from datos import operacionPropiedad, tiposPropiedad, comuna
 
 
 # Create your views here.

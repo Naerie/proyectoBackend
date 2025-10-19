@@ -9,17 +9,48 @@ class ContactoAdmin(admin.ModelAdmin):
                     'nTelefono', 
                     'mensaje', 
                     'fecha']
+    readonly_fields = [
+        'nombre',
+        'email',
+        'nTelefono',
+        'mensaje',
+        'fecha'
+        ]
+    list_filter = [ 
+        'fecha',
+        ]
+    list_per_page = 10
 
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ['nombreCliente',
                     'emailCliente',
                     'nTelefonoCliente',
                     'fechaCliente']
+    readonly_fields = [
+        'nombreCliente',
+        'emailCliente',
+        'nTelefonoCliente',
+        'fechaCliente'
+        ]
+    list_filter = [ 
+        'fechaCliente',
+        ]
+    list_per_page = 10
+
     
 class SusAdmin(admin.ModelAdmin):
     list_display = ['emailSus',
                     'fechaSus',
                     'estadoSus']
+    readonly_fields = [
+        'emailSus',
+        'fechaSus'
+        ]
+    list_filter = [ 
+        'fechaSus',
+        ]
+    list_per_page = 10
+
     
 admin.site.register(Contacto, ContactoAdmin)
 admin.site.register(Cliente, ClienteAdmin)
