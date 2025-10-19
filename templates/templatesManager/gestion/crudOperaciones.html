@@ -3,9 +3,11 @@
     <div class="col-md-12">
       <div class="card shadow-sm p-4">
         <h2 class="mb-4">Gestionar Operaciones</h2>
-        <form id="formVentaArriendo">
+        <form id="formVentaArriendo" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="form_name" value="operacion">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" name="nombre_venta" placeholder="Nuevo Registro" required>
+            {{ formO.operacion }}
             <button class="btn btn-primary" type="submit">Agregar</button>
           </div>
         </form>

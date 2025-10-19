@@ -1,9 +1,9 @@
 {% extends 'templatesManager/base-admin.html' %}
-{%block title%}Gestion de subscripciones {%endblock%}
+{%block title%}Gestion de suscripciones {%endblock%}
 
 {%block content%} 
 <div class="container mt-5">
-  <h2>Subscripciones</h2>
+  <h2>Suscripciones</h2>
 
   <!-- Tabla Subscripciones Activas -->
 <div class="mb-5">
@@ -12,22 +12,22 @@
       <thead class="table-success">
         <tr>
           <th>Correo</th>
-          <th>Fecha Subscripción</th>
+          <th>Fecha Suscripción</th>
           <th>Estado</th>
         </tr>
       </thead>
       <tbody>
-        {% for s in subscripciones %}
-          {% if s.estado == "activa" %}
+        {% for s in suscripciones %}
+          {% if s.estadoSus %}
           <tr>
-            <td>{{ s.correo }}</td>
-            <td>{{ s.fecha_subs }}</td>
+            <td>{{ s.emailSus }}</td>
+            <td>{{ s.fechaSus }}</td>
             <td><span class="badge bg-success">Activa</span></td>
           </tr>
           {% endif %}
         {% empty %}
           <tr>
-            <td colspan="3" class="text-center text-muted">No hay subscripciones activas.</td>
+            <td colspan="3" class="text-center text-muted">No hay suscripciones activas.</td>
           </tr>
         {% endfor %}
       </tbody>
@@ -41,22 +41,22 @@
       <thead class="table-danger">
         <tr>
           <th>Correo</th>
-          <th>Fecha Subscripción</th>
+          <th>Fecha Suscripción</th>
           <th>Estado</th>
         </tr>
       </thead>
       <tbody>
-        {% for s in subscripciones %}
-          {% if s.estado == "cancelada" %}
+        {% for s in suscripciones %}
+          {% if not s.estadoSus %}
           <tr>
-            <td>{{ s.correo }}</td>
-            <td>{{ s.fecha_subs }}</td>
+            <td>{{ s.emailSus }}</td>
+            <td>{{ s.fechaSus }}</td>
             <td><span class="badge bg-danger">Cancelada</span></td>
           </tr>
           {% endif %}
         {% empty %}
           <tr>
-            <td colspan="3" class="text-center text-muted">No hay subscripciones canceladas.</td>
+            <td colspan="3" class="text-center text-muted">No hay suscripciones canceladas.</td>
           </tr>
         {% endfor %}
       </tbody>

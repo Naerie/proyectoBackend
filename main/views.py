@@ -13,9 +13,9 @@ from datos import operacionPropiedad, tiposPropiedad, comuna
 def index(request):
     propiedades = Propiedad.objects.all().order_by('-fecha')
     # subscripcion
-    formulario = forms.FormSubscripcion()
+    formulario = forms.FormSuscripcion()
     if request.method =='POST':
-        formulario = forms.FormSubscripcion(request.POST)
+        formulario = forms.FormSuscripcion(request.POST)
         if formulario.is_valid():
             formulario.save()
             return redirect('home')

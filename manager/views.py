@@ -2,15 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from manager import forms
-from main.models import Contacto, Cliente
-from manager.models import Propiedad
-
-
-#archivo datos.py ir reemplazando 
-#from datos import propiedades
-# from datos import clientes
-from datos import tiposPropiedad, estadosPropiedad, comuna
-from datos import subs
+from main.models import Contacto, Cliente, Suscripcion
+from manager.models import Propiedad, TiposPropiedades, Comunas, EstadosPropiedades, OperacionesPropiedades
 
 
 def registro(request):
@@ -75,9 +68,61 @@ def eliminarMensaje(request, id):
     return redirect('ver-contacto')  
 
 
+def gestionar(request):        
+    formTipos = forms.FormTiposPropiedades()
+    formEstados = forms.FormEstadosPropiedades()
+    formOpe = forms.FormOperacionesPropiedades()
+    formComuna = forms.FormComunas()
 
-def gestionar(request):
-    return render(request, 'templatesManager/gestionar.html')
+    if request.method == 'POST':
+        form_name = request.POST.get('form_name')
+
+        if form_name == 'tipos':
+            formTipos = forms.FormTiposPropiedades(request.POST)
+            if formTipos.is_valid():
+                formTipos.save()
+                return redirect('gestion')
+
+        elif form_name == 'estados':
+            formEstados = forms.FormEstadosPropiedades(request.POST)
+            if formEstados.is_valid():
+                formEstados.save()
+                return redirect('gestion')
+
+        elif form_name == 'operaciones':
+            formOpe = forms.FormOperacionesPropiedades(request.POST)
+            if formOpe.is_valid():
+                formOpe.save()
+                return redirect('gestion')
+
+        elif form_name == 'comunas':
+            formComuna = forms.FormComunas(request.POST)
+            if formComuna.is_valid():
+                formComuna.save()
+                return redirect('gestion')
+
+    # recuperar los registros
+    tipos = TiposPropiedades.objects.all()
+    operaciones = OperacionesPropiedades.objects.all()
+    comunas = Comunas.objects.all()
+    estados = EstadosPropiedades.objects.all()
+
+    data = {
+        'formT': formTipos,
+        'formE': formEstados,
+        'formO': formOpe,
+        'formC': formComuna,
+        'tipos': tipos,
+        'operaciones': operaciones,
+        'comunas': comunas,
+        'estados': estados,
+    }
+    return render(request, 'templatesManager/gestionar.html', data)
+
+def eliminarTipo(request, id): #cambiar por interes luego?
+    tipo = get_object_or_404(TiposPropiedades, id=id)
+    tipo.delete()  
+    return redirect('gestion') 
 
 def cerrar_sesion(request):
     logout(request)
@@ -88,9 +133,10 @@ def Interes(request):
     return render(request, 'templatesManager/interes.html', {'clientes':clientes})
 
 def eliminarCliente(request, id): #cambiar por interes luego?
-    propiedad = get_object_or_404(Cliente, id=id)
-    propiedad.delete()  
+    cliente = get_object_or_404(Cliente, id=id)
+    cliente.delete()  
     return redirect('tabla-interes') 
 
-def verSubscripciones(request):
-    return render(request, 'templatesManager/subscripciones.html', {'subscripciones':subs})
+def verSuscripciones(request):
+    sus = Suscripcion.objects.all()
+    return render(request, 'templatesManager/suscripciones.html', {'suscripciones':sus})

@@ -1,5 +1,5 @@
 from django import forms
-from manager.models import Propiedad
+from manager.models import Propiedad, TiposPropiedades, OperacionesPropiedades, EstadosPropiedades, Comunas
 
 class FormRegistrarP(forms.ModelForm):
     class Meta:
@@ -88,7 +88,69 @@ class FormRegistrarP(forms.ModelForm):
         }
 
 
+class FormTiposPropiedades(forms.ModelForm):
+    class Meta:
+        model = TiposPropiedades
+        fields = '__all__'
+        labels = {'tipoPropiedad':''}
+        widgets = {'tipoPropiedad':forms.TextInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Nuevo tipo de propiedad'
+            }),
+            }
+    def clean_tipoPropiedades(self):
+        tipo = self.cleaned_data.get('tipoPropiedad')
+        if TiposPropiedades.objects.filter(tipoPropiedad=tipo).exists():
+            raise forms.ValidationError("Ya existe en la base de datos")
+        return tipo
 
+class FormEstadosPropiedades(forms.ModelForm):
+    class Meta:
+        model = EstadosPropiedades
+        fields = '__all__'
+        labels = {'estado':''}
+        widgets = {'estado':forms.TextInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Nueva disponibilidad'
+            }),
+            }
+    def clean_estado(self):
+        estado = self.cleaned_data.get('estado')
+        if EstadosPropiedades.objects.filter(estado=estado).exists():
+            raise forms.ValidationError("Ese registro ya existe en la base de datos")
+        return estado
+
+class FormOperacionesPropiedades(forms.ModelForm):
+    class Meta:
+        model = OperacionesPropiedades
+        fields = '__all__'
+        labels = {'operacion':''}
+        widgets = {'operacion':forms.TextInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Nueva operación'
+            }),
+            }
+    def clean_operación(self):
+        operacion = self.cleaned_data.get('operacion')
+        if OperacionesPropiedades.objects.filter(operacion=operacion).exists():
+            raise forms.ValidationError("Ese registro ya existe en la base de datos")
+        return operacion
+
+class FormComunas(forms.ModelForm):
+    class Meta:
+        model = Comunas
+        fields = '__all__'
+        labels = {'comuna':''}
+        widgets = {'comuna':forms.TextInput(attrs={
+                'class': 'form-control', 
+                'placeholder': 'Nueva comuna'
+            }),
+            }
+    def clean_comuna(self):
+        comuna = self.cleaned_data.get('comuna')
+        if Comunas.objects.filter(comuna=comuna).exists():
+            raise forms.ValidationError("Ese registro ya existe en la base de datos")
+        return comuna
 
 
 

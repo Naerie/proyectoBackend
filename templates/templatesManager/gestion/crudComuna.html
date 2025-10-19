@@ -1,11 +1,13 @@
-  <!-- ================== CRUD DISPONIBILIDAD ================== -->
+  <!-- ================== CRUD comuna ================== -->
   <div class="row mb-5">
     <div class="col-md-12">
       <div class="card shadow-sm p-4">
-        <h2 class="mb-4">Gestionar Estados</h2>
-        <form id="formDisponibilidad">
+        <h2 class="mb-4">Gestionar Comunas</h2>
+        <form id="formComuna" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="form_name" value="comuna">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" name="nombre_disponibilidad" placeholder="Nueva disponibilidad" required>
+            {{ formC.comuna }}
             <button class="btn btn-primary" type="submit">Agregar</button>
           </div>
         </form>
@@ -16,7 +18,7 @@
               <th class="text-end">Acciones</th>
             </tr>
           </thead>
-          <tbody id="tablaDisponibilidad">
+          <tbody id="tablaComuna">
             <tr><td colspan="2" class="text-center">No hay registros.</td></tr>
           </tbody>
         </table>

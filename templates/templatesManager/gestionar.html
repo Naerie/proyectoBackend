@@ -6,13 +6,15 @@
 {% block content %}
 <div class="container my-5">
 
-{% include 'templatesManager/crudTipop.html' %}
+{% include 'templatesManager/gestion/crudTipop.html' %}
 
-{% include 'templatesManager/crudDisponibilidad.html' %}
+{% include 'templatesManager/gestion/crudDisponibilidad.html' %}
 
-{% include 'templatesManager/crudOperaciones.html' %}
+{% include 'templatesManager/gestion/crudOperaciones.html' %}
+
+{% include 'templatesManager/gestion/crudComuna.html' %}
+
 
 </div>
 
-<script src="{% static 'assets/js/scriptCruds.js' %}"></script>
 {% endblock %}
