@@ -25,9 +25,8 @@
                 <td class="text-end">
                   <div class="btn-group" role="group">
                     <!-- Botón Actualizar -->
-                  <button type="button" class="btn btn-outline-primary btn-sm" >
+                  <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalActualizar{{ o.id }}" >
                     <i class="bi bi-pencil-square"></i> Actualizar
-                    </a>
 
                     <!-- Botón Eliminar -->
                     <form method="POST" action="" style="display:inline;">
@@ -40,6 +39,27 @@
                 </td>
               </tr>
               {% include 'templatesManager/modal-eliminar.html' with item=o tipo="registro" url_name="eliminar-gestion" campo='operacion' %}
+              <!-- Modal actualizar -->
+              <div class="modal fade" id="modalActualizar{{ o.id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <form method="POST" action="{% url 'actualizar-gestion' 'operacion' o.id %}">
+                      {% csrf_token %}
+                      <div class="modal-header">
+                        <h5 class="modal-title">Actualizar operaciones</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                      </div>
+                      <div class="modal-body">
+                        <input type="text" name="operacion" class="form-control" value="{{ o.operacion }}">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
 
             {% empty %}
               <tr>
