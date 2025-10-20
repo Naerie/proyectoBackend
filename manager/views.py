@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login, authenticate
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib import messages
 from manager import forms
 from main.models import Contacto, Cliente, Suscripcion
 from manager.models import Propiedad, TiposPropiedades, Comunas, EstadosPropiedades, OperacionesPropiedades
 
-
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def registro(request):
     formulario = forms.FormRegistrarP()
     if request.method == 'POST':
@@ -17,7 +20,8 @@ def registro(request):
     data = {'form' : formulario}
     return render(request, 'templatesManager/registrarPropiedades.html', data)
 
-
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def verPropiedades(request):
     propiedades = []
     for prop in Propiedad.objects.all():
@@ -30,13 +34,15 @@ def verPropiedades(request):
         'propiedades': propiedades
     })
 
-
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def eliminarPropiedad(request, id):
     propiedad = get_object_or_404(Propiedad, id=id)
     propiedad.delete()  
     return redirect('listado-propiedades')  
 
-
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def actualizarPropiedades(request, id):
     # ACTUALIZAR
     propiedad = get_object_or_404(Propiedad, id=id)
@@ -52,22 +58,40 @@ def actualizarPropiedades(request, id):
             'propiedad':propiedad}
     return render(request, 'templatesManager/propiedades.html', data)
 
+
 def logIn(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None and (user.is_staff or user.is_superuser):
+            login(request, user)
+            return redirect('home-manager')  
+        else:
+            messages.error(request, 'Credenciales inválidas o sin permisos.')
     return render(request, 'templatesManager/login.html')
 
+
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def homeManager(request):
     return render(request, 'templatesManager/manage.html')
 
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def verMensajes(request):
     contacto = Contacto.objects.all()
     return render(request, 'templatesManager/contacto-admin.html', {'contacto':contacto})
 
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def eliminarMensaje(request, id):
     propiedad = get_object_or_404(Contacto, id=id)
     propiedad.delete()  
     return redirect('ver-contacto')  
 
-
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def gestionar(request):        
     formTipos = forms.FormTiposPropiedades()
     formEstados = forms.FormEstadosPropiedades()
@@ -119,6 +143,8 @@ def gestionar(request):
     }
     return render(request, 'templatesManager/gestionar.html', data)
 
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def eliminarGestion(request, id, campo): 
     if campo == 'tipo':
         objeto = get_object_or_404(TiposPropiedades, id=id)
@@ -135,6 +161,8 @@ def eliminarGestion(request, id, campo):
     return redirect('gestion')
     
 
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def actualizarGestion(request, campo, id):
     if campo == 'tipo':
         objeto = get_object_or_404(TiposPropiedades, id=id)
@@ -160,19 +188,27 @@ def actualizarGestion(request, campo, id):
         form = form(instance=objeto)
         return redirect('gestion')
 
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def cerrar_sesion(request):
     logout(request)
     return redirect('login-admin')
 
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def Interes(request):
     clientes = Cliente.objects.all()
     return render(request, 'templatesManager/interes.html', {'clientes':clientes})
 
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def eliminarCliente(request, id): #cambiar por interes luego?
     cliente = get_object_or_404(Cliente, id=id)
     cliente.delete()  
     return redirect('tabla-interes') 
 
+@login_required(login_url='login-admin')
+@user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
 def verSuscripciones(request):
     sus = Suscripcion.objects.all()
     return render(request, 'templatesManager/suscripciones.html', {'suscripciones':sus})
