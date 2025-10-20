@@ -12,13 +12,10 @@ Sistema web para la gestión y publicación de propiedades inmobiliarias. Permit
 - mySQL
 
 ---
-Instrucciones:
-
-
 ## Instrucciones
 
-# Clonar el repositorio
-# Crear y activar un entorno virtual
+####  Clonar el repositorio
+#### Crear y activar un entorno virtual
 **Windows**
 python -m venv env
 env\Scripts\activate
@@ -27,15 +24,15 @@ env\Scripts\activate
 python3 -m venv env
 source env/bin/activate
 
-# Instalar dependencias
+#### Instalar dependencias
 pip install -r requirements.txt
 
-# Ejecutar las migraciones
+#### Ejecutar las migraciones
 python manage.py makemigrations
 python manage.py migrate
 
-### Iniciar el servidor de desarrollo
+#### Iniciar el servidor de desarrollo
 python manage.py runserver
 
-## Notas
+#### Notas
 - Requiere un **usuario staff o superusuario** para acceder al panel de gestión.
