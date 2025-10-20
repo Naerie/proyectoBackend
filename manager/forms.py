@@ -83,9 +83,37 @@ class FormRegistrarP(forms.ModelForm):
             'amoblado': forms.CheckboxInput(attrs={
                 'class': 'form-check-input'
             }),
-
-
         }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        #superficie construida sea coherente
+        superficie = cleaned_data.get('superficie')
+        superficie_construida = cleaned_data.get('superficieConstruida')
+        #para estacionamientos 
+        estacionamiento = cleaned_data.get('estacionamiento')
+        n_est = cleaned_data.get('nEstacionamientos')
+        # validacion 1
+        if superficie and superficie_construida:
+            if superficie_construida > superficie:
+                self.add_error('superficieConstruida', "La superficie construida no puede ser mayor que la superficie total.")
+        # VALIDACION 2
+        if not estacionamiento and n_est and n_est > 0:
+            self.add_error('nEstacionamientos', "No puede indicar número de estacionamientos si no selecciona 'Estacionamiento'.")
+        return cleaned_data
+    
+    def clean_precio(self):
+        precio = self.cleaned_data.get('precio')
+        #numerico
+        try:
+            valor = float(precio)
+        except (TypeError, ValueError):
+            raise forms.ValidationError("El precio debe ser un número válido.")
+        #mayor a 0
+        if valor <= 0:
+            raise forms.ValidationError("El precio debe ser mayor a 0.")
+        return precio
+
 
 
 class FormTiposPropiedades(forms.ModelForm):
