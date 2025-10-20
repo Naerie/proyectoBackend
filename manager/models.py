@@ -40,16 +40,27 @@ class Propiedad(models.Model):
             self.slug = slugify(self.titulo)
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return f"{self.titulo} - {self.precio} {self.moneda}"
+
 # tablas gestion
 class TiposPropiedades(models.Model):
     tipoPropiedad = models.CharField(max_length=50, blank=False,unique=True)
+    def __str__(self):
+        return self.tipoPropiedad
 
 class EstadosPropiedades(models.Model):
     estado = models.CharField(max_length=50, blank=False,unique=True)
+    def __str__(self):
+        return self.estado
 
 class OperacionesPropiedades(models.Model):
     operacion = models.CharField(max_length=50, blank=False,unique=True)
+    def __str__(self):
+        return self.operacion
 
 class Comunas(models.Model):
     comuna = models.CharField(max_length=50, blank=False,unique=True)
+    def __str__(self):
+        return self.comuna
 
