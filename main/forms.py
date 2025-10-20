@@ -35,6 +35,14 @@ class FormContacto(forms.ModelForm):
         }
 
         #validaciones
+    def clean_nombre(self):
+        nombre = self.cleaned_data.get('nombre')
+        if nombre:
+            patron = r'^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'  
+            if not re.fullmatch(patron, nombre):
+                raise forms.ValidationError("El nombre solo puede contener letras y espacios.")
+        return nombre
+
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if email:
@@ -75,6 +83,13 @@ class FormCliente(forms.ModelForm):
                 'placeholder': '+56 9 12345678'
             })
         }
+    def clean_nombreCliente(self):
+        nombre = self.cleaned_data.get('nombreCliente')
+        if nombre:
+            patron = r'^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$'  
+            if not re.fullmatch(patron, nombre):
+                raise forms.ValidationError("El nombre solo puede contener letras y espacios.")
+        return nombre
     
     def clean_emailCliente(self):
         email = self.cleaned_data.get('email')
