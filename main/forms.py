@@ -75,6 +75,22 @@ class FormCliente(forms.ModelForm):
                 'placeholder': '+56 9 12345678'
             })
         }
+    
+    def clean_emailCliente(self):
+        email = self.cleaned_data.get('email')
+        if email:
+            pat = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+            if not re.fullmatch(pat, email):
+                raise forms.ValidationError("Dirección de correo inválida.")
+        return email
+            
+    def clean_nTelefonoCliente(self):
+        telefono = self.cleaned_data.get('nTelefono')
+        if telefono:
+            pat = r'^\+\d{1,3}\d{10}$'
+            if not re.fullmatch(pat, telefono):
+                raise forms.ValidationError('Numero de telefono inválido.')
+        return telefono
 
 class FormSuscripcion(forms.ModelForm):
     class Meta:
@@ -90,8 +106,14 @@ class FormSuscripcion(forms.ModelForm):
                 'placeholder': 'Tu correo electrónico'
             })
         }
-    def clean_emailSub(self):
+    def clean_emailSus(self):
         email = self.cleaned_data.get('emailSus')
+        if email:
+            patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+            if not re.fullmatch(patron, email):
+                raise forms.ValidationError("Dirección de correo inválida.")
         if Suscripcion.objects.filter(emailSus=email).exists():
             raise forms.ValidationError("Ya estás suscrito.")
         return email
+        
+    
