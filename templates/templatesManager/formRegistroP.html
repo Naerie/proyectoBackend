@@ -28,6 +28,9 @@
     <div class="col-auto">
         {{ form.superficieConstruida.label_tag }}
         {{ form.superficieConstruida }}
+        {% for error in form.superficieConstruida.errors %}
+            <div class="invalid-feedback d-block">{{ error }}</div>
+        {% endfor %}
     </div>
 </div>
 
@@ -49,6 +52,9 @@
     <div class="col-auto">
         {{ form.precio.label_tag }}
         {{ form.precio }}
+        {% for error in form.precio.errors %}
+            <div class="invalid-feedback d-block">{{ error }}</div>
+        {% endfor %}
     </div>
     <div class="col-auto d-flex align-items-center">
         {% for radio in form.moneda %}
@@ -95,6 +101,9 @@
         <div class="mt-2">
             {{ form.nEstacionamientos.label_tag }}
             {{ form.nEstacionamientos }}
+            {% for error in form.nEstacionamientos.errors %}
+            <div class="invalid-feedback d-block">{{ error }}</div>
+        {% endfor %}
         </div>
     </div>
 </div>
