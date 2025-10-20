@@ -9,7 +9,33 @@ Sistema web para la gestión y publicación de propiedades inmobiliarias. Permit
 - Django 4.x
 - Bootstrap 5
 - HTML / CSS / JavaScript
+- mySQL
 
 ---
+Instrucciones:
 
-El proyecto no utiliza librerias adicionales por el momento.
+
+## Instrucciones
+
+# Clonar el repositorio
+# Crear y activar un entorno virtual
+**Windows**
+python -m venv env
+env\Scripts\activate
+
+**macOS / Linux**
+python3 -m venv env
+source env/bin/activate
+
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Ejecutar las migraciones
+python manage.py makemigrations
+python manage.py migrate
+
+### Iniciar el servidor de desarrollo
+python manage.py runserver
+
+## Notas
+- Requiere un **usuario staff o superusuario** para acceder al panel de gestión.
