@@ -27,9 +27,6 @@ class ClienteAdmin(admin.ModelAdmin):
                     'nTelefonoCliente',
                     'fechaCliente']
     readonly_fields = [
-        'nombreCliente',
-        'emailCliente',
-        'nTelefonoCliente',
         'fechaCliente'
         ]
     list_filter = [ 
