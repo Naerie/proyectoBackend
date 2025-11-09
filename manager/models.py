@@ -2,6 +2,30 @@ from django.db import models
 from django.utils.text import slugify
 
 # Create your models here.
+# tablas gestion
+class TiposPropiedades(models.Model):
+    tipoPropiedad = models.CharField(max_length=50, blank=False,unique=True)
+    def __str__(self):
+        return self.tipoPropiedad
+
+class EstadosPropiedades(models.Model):
+    estado = models.CharField(max_length=50, blank=False,unique=True)
+    def __str__(self):
+        return self.estado
+
+class OperacionesPropiedades(models.Model):
+    operacion = models.CharField(max_length=50, blank=False,unique=True)
+    def __str__(self):
+        return self.operacion
+
+class Comunas(models.Model):
+    comuna = models.CharField(max_length=50, blank=False,unique=True)
+    def __str__(self):
+        return self.comuna
+
+
+
+
 class Propiedad(models.Model):
     MONEDAS = [
         ('UF', 'UF'),
@@ -23,6 +47,40 @@ class Propiedad(models.Model):
     precio = models.CharField(max_length=10)
     moneda = models.CharField(max_length=3, choices=MONEDAS, default='CLP')
     fecha = models.DateField(auto_now_add=True)
+    # FK
+    comuna = models.ForeignKey(
+        Comunas,
+        on_delete=models.PROTECT,
+        null=True, 
+        blank=True,
+        related_name='propiedades',
+        verbose_name='Comuna'
+    )
+    tipo_propiedad = models.ForeignKey(
+        TiposPropiedades,
+        on_delete=models.PROTECT,
+        null=True, 
+        blank=True,
+        related_name='propiedades',
+        verbose_name='Tipo de propiedad'
+    )
+    operacion = models.ForeignKey(
+        OperacionesPropiedades,
+        on_delete=models.PROTECT,
+        null=True, 
+        blank=True,
+        related_name='propiedades',
+        verbose_name='Operación'
+    )
+    estado = models.ForeignKey(
+        EstadosPropiedades,
+        on_delete=models.PROTECT,
+        null=True, 
+        blank=True,
+        related_name='propiedades',
+        verbose_name='Estado'
+    )
+
     #EXTRAS
         #Depto
     conserje = models.BooleanField(default=False)
@@ -42,25 +100,4 @@ class Propiedad(models.Model):
 
     def __str__(self):
         return f"{self.titulo} - {self.precio} {self.moneda}"
-
-# tablas gestion
-class TiposPropiedades(models.Model):
-    tipoPropiedad = models.CharField(max_length=50, blank=False,unique=True)
-    def __str__(self):
-        return self.tipoPropiedad
-
-class EstadosPropiedades(models.Model):
-    estado = models.CharField(max_length=50, blank=False,unique=True)
-    def __str__(self):
-        return self.estado
-
-class OperacionesPropiedades(models.Model):
-    operacion = models.CharField(max_length=50, blank=False,unique=True)
-    def __str__(self):
-        return self.operacion
-
-class Comunas(models.Model):
-    comuna = models.CharField(max_length=50, blank=False,unique=True)
-    def __str__(self):
-        return self.comuna
 
