@@ -92,7 +92,7 @@ class FormCliente(forms.ModelForm):
         return nombre
     
     def clean_emailCliente(self):
-        email = self.cleaned_data.get('email')
+        email = self.cleaned_data.get('emailCliente')
         if email:
             pat = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
             if not re.fullmatch(pat, email):
@@ -100,7 +100,7 @@ class FormCliente(forms.ModelForm):
         return email
             
     def clean_nTelefonoCliente(self):
-        telefono = self.cleaned_data.get('nTelefono')
+        telefono = self.cleaned_data.get('nTelefonoCliente')
         if telefono:
             pat = r'^\+\d{1,3}\d{10}$'
             if not re.fullmatch(pat, telefono):
