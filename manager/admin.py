@@ -21,18 +21,31 @@ class PropiedadAdmin(admin.ModelAdmin):
         'amoblado',
         'estacionamiento',
         'nEstacionamientos',
-        'piscina'
+        'piscina',
+        'comuna',
+        'tipo_propiedad',
+        'operacion',
+        'estado'
     ]
     list_filter = [ 
         'moneda',
         'fecha',
         'amoblado',
-        'piscina'
+        'piscina',
+        'comuna',
+        'tipo_propiedad',
+        'operacion',
+        'estado'
         ]
     search_fields = [
         'titulo', 
         'descripcion', 
-        'ubicacion']
+        'ubicacion',
+        'comuna__comuna',
+        'tipo_propiedad__tipoPropiedad',
+        'operacion__operacion',
+        'estado__estado'
+        ]
     #solo lectura
     readonly_fields = [
         'fecha',
