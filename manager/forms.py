@@ -21,7 +21,13 @@ class FormRegistrarP(forms.ModelForm):
             'piscina': 'Piscina',
             'conserje': 'Conserje',
             'logia': 'Logia',
-            'amoblado': 'Amoblado'
+            'amoblado': 'Amoblado',
+            #fk
+            'comuna': 'Comuna',
+            'tipo_propiedad':'Tipo de propiedad',
+            'operacion':'Operacion',
+            'estado':'Estado'
+
         }
         widgets = {
             'titulo': forms.TextInput(attrs={
@@ -83,6 +89,19 @@ class FormRegistrarP(forms.ModelForm):
             'amoblado': forms.CheckboxInput(attrs={
                 'class': 'form-check-input'
             }),
+            'comuna': forms.Select(attrs={
+                'class': 'form-select'
+            }),
+            'tipo_propiedad':forms.Select(attrs={
+                'class': 'form-select'
+            }),
+            'operacion':forms.Select(attrs={
+                'class': 'form-select'
+            }),
+            'estado':forms.Select(attrs={
+                'class': 'form-select'
+            }),
+
         }
 
     def clean(self):
@@ -126,7 +145,7 @@ class FormTiposPropiedades(forms.ModelForm):
                 'placeholder': 'Nuevo tipo de propiedad'
             }),
             }
-    def clean_tipoPropiedades(self):
+    def clean_tipoPropiedad(self):
         tipo = self.cleaned_data.get('tipoPropiedad')
         if TiposPropiedades.objects.filter(tipoPropiedad=tipo).exists():
             raise forms.ValidationError("Ya existe en la base de datos")
@@ -158,7 +177,7 @@ class FormOperacionesPropiedades(forms.ModelForm):
                 'placeholder': 'Nueva operación'
             }),
             }
-    def clean_operación(self):
+    def clean_operacion(self):
         operacion = self.cleaned_data.get('operacion')
         if OperacionesPropiedades.objects.filter(operacion=operacion).exists():
             raise forms.ValidationError("Ese registro ya existe en la base de datos")
