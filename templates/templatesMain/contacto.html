@@ -1,24 +1,60 @@
 {% extends 'templatesMain/base-cliente.html'%}
 
-{%block title%}CONTACTANOS{%endblock%}
+{% block title %}CONTACTANOS{% endblock %}
 
-{%block content%}
-
+{% block content %}
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card shadow-sm p-4">
         <h2 class="mb-4 text-center">Contáctanos</h2>
-        <form method="POST">
-          {{ form.as_p }}
+
+        <form method="POST" novalidate>
           {% csrf_token %}
+
+          <!-- Nombre -->
+          <div class="mb-3">
+            {{ form.nombre.label_tag }}
+            {{ form.nombre }}
+            {% for error in form.nombre.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {% for error in form.email.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+          </div>
+
+          <!-- Teléfono -->
+          <div class="mb-3">
+            {{ form.nTelefono.label_tag }}
+            {{ form.nTelefono }}
+            {% for error in form.nTelefono.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+          </div>
+
+          <!-- Mensaje -->
+          <div class="mb-3">
+            {{ form.mensaje.label_tag }}
+            {{ form.mensaje }}
+            {% for error in form.mensaje.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+          </div>
+
+          <!-- Botón -->
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-
-{%endblock%}
+{% endblock %}
