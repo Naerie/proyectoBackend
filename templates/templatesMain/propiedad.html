@@ -83,14 +83,49 @@
             <h5 class="card-title mb-3 text-center">¿Estás interesado?</h5>
             <form method="POST" novalidate>
               {% csrf_token %}
-              {{ form.as_p }}
+              <!-- Campo Nombre -->
+              <div class="mb-3">
+                <label for="{{ form.nombreCliente.id_for_label }}" class="form-label">{{ form.nombreCliente.label }}</label>
+                {{ form.nombreCliente }}
+                {% if form.nombreCliente.errors %}
+                  {% for error in form.nombreCliente.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+
+              <!-- Campo Email -->
+              <div class="mb-3">
+                <label for="{{ form.emailCliente.id_for_label }}" class="form-label">{{ form.emailCliente.label }}</label>
+                {{ form.emailCliente }}
+                {% if form.emailCliente.errors %}
+                  {% for error in form.emailCliente.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+
+              <!-- Campo Teléfono -->
+              <div class="mb-3">
+                <label for="{{ form.nTelefonoCliente.id_for_label }}" class="form-label">{{ form.nTelefonoCliente.label }}</label>
+                {{ form.nTelefonoCliente }}
+                {% if form.nTelefonoCliente.errors %}
+                  {% for error in form.nTelefonoCliente.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+
+              <!-- Botón -->
               <button type="submit" class="btn btn-primary w-100">Enviar</button>
+
+              <p class="text-muted small mt-2 text-center">
+                Te contactaremos lo antes posible.
+              </p>
             </form>
-            <p class="text-muted small mt-2 text-center">
-              Te contactaremos lo antes posible.
-            </p>
           </div>
         </div>
+
 
         <!-- Mapa -->
         <div class="card shadow-sm">

@@ -51,11 +51,11 @@
       </select>
     </div>
     
-    <!-- Tipo de inmueble -->
+    <!-- Tipo de propiedades -->
     <div class="col-auto">
       <select class="form-select" name="tipo">
         <option value="">Tipo de inmueble</option>
-        {% for t in tipos_inmueble %}
+        {% for t in tipos_propiedades %}
           <option value="{{ t.id }}" {% if request.GET.tipo == t.id|stringformat:"s" %}selected{% endif %}>
             {{ t.tipoPropiedad }}
           </option>
