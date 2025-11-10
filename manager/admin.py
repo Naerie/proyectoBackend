@@ -1,5 +1,6 @@
 from django.contrib import admin
 from manager.models import Propiedad, TiposPropiedades, OperacionesPropiedades, EstadosPropiedades, Comunas
+from main.models import Interes
 
 # Register your models here.
 
@@ -71,6 +72,18 @@ class ComunasAdmin(admin.ModelAdmin):
     list_display = [
         'comuna'
     ]
+
+class InteresAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'cliente',
+        'propiedad',
+        'creado',
+    ]
+    list_filter = ['creado']         
+    
+
+admin.site.register(Interes, InteresAdmin)
 admin.site.register(Propiedad, PropiedadAdmin)
 admin.site.register(TiposPropiedades, TiposPropiedadesAdmin)
 admin.site.register(OperacionesPropiedades, OperacionesPropiedadesAdmin)
