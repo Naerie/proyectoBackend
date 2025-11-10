@@ -194,31 +194,47 @@ section.newsletter-section .btn.btn-naranjo {
     }
 }
 
-/* ======== CONTACTO ======== */
-.contact-header {
+/* ======== SECCIONES COMUNES ======== */
+.section-hero {
     width: 100%;
     background-color: var(--azul);
-    padding: 3rem 0 2rem;
+    color: var(--blanco);
+    padding: 3.5rem 0 2.5rem;
+    border-top: 4px solid var(--naranjo);
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-.contact-section {
+.section-content {
     background-color: var(--blanco);
     padding: 4rem 0;
-    border-top: 4px solid var(--naranjo);
 }
 
-.contact-form {
+/* Tarjetas/bloques de contenido “corporativos” */
+.section-card {
     background: var(--blanco);
+    padding: 2rem 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    border-top: 3px solid var(--naranjo);
 }
 
-.contact-form label {
+/* Títulos secundarios internos */
+.section-subtitle {
+    color: var(--azul);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--naranjo);
+    padding-left: 0.75rem;
+}
+
+/* Formularios con mismo look en todas las páginas */
+.form-styled label {
     font-weight: 600;
     color: var(--azul);
 }
 
-.contact-form input,
-.contact-form textarea {
+.form-styled input,
+.form-styled textarea {
     width: 100%;
     padding: 0.75rem 1rem;
     border-radius: 10px;
@@ -229,20 +245,17 @@ section.newsletter-section .btn.btn-naranjo {
     background-color: #fff;
 }
 
-.contact-form textarea {
-    resize: none;
-    height: 140px;
-}
+.form-styled textarea { resize: none; height: 140px; }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+.form-styled input:focus,
+.form-styled textarea:focus {
     outline: none;
     border-color: var(--naranjo);
     box-shadow: 0 0 0 0.25rem rgba(212, 88, 49, 0.25);
 }
 
-/* Botón de envío */
-.contact-form .btn-naranjo {
+/* Botón marca (ya lo usas) */
+.btn-naranjo {
     background: var(--naranjo);
     border: none;
     color: var(--blanco);
@@ -251,22 +264,11 @@ section.newsletter-section .btn.btn-naranjo {
     box-shadow: 0 4px 14px rgba(212, 88, 49, 0.35);
     transition: all 0.3s ease;
 }
-
-.contact-form .btn-naranjo:hover {
-    filter: brightness(0.95);
-    transform: translateY(-1px);
-}
+.btn-naranjo:hover { filter: brightness(0.95); transform: translateY(-1px); }
 
 /* Responsivo */
 @media (max-width: 768px) {
-    .contact-header {
-    padding: 2.5rem 1rem;
-    }
-    .contact-header h1 {
-    font-size: 1.9rem;
-    }
-    .contact-form {
-    padding: 1rem;
-    }
+    .section-hero { padding: 2.5rem 1rem; }
+    .section-hero h1 { font-size: 1.9rem; }
+    .section-card { padding: 1.5rem; }
 }
-
