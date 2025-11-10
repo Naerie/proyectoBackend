@@ -88,34 +88,38 @@
 
 
 
-    <!-- grid cards -->
-<div class="row">
-  {% for p in propiedades %}
-  <div class="col-md-4 mb-4 mt-4">
-    <a href="{% url 'detalle-propiedad' p.slug %}" class="text-decoration-none text-dark">
-      <div class="card h-100 shadow-sm border-0 rounded-3">
-        <!-- Imagen principal -->
-          <img src="{{ p.thumb.url }}" class="card-img-top" alt="{{ p.titulo }}">
-
-
-        <div class="card-body">
-          <h5 class="card-title">{{ p.titulo }}</h5>
-          {% if p.ubicacion %}
-            <p class="text-muted small mb-2"><i class="bi bi-geo-alt"></i> {{ p.ubicacion }}</p>
-          {% endif %}
-          {% if p.precio %}
-            <p class="fw-bold text-primary mb-0">
-              {{ p.moneda }} {{ p.precio }}
-            </p>
-          {% endif %}
-        </div>
+ <!-- SECCIÓN PROPIEDADES -->
+<section class="propiedades-section py-4">
+  <div class="container">
+    <div class="row">
+      {% for p in propiedades %}
+      <div class="col-md-4 mb-4">
+        <a href="{% url 'detalle-propiedad' p.slug %}" class="text-decoration-none text-dark">
+          <div class="card h-100 shadow-sm border-0 rounded-3">
+            <img src="{{ p.thumb.url }}" class="card-img-top" alt="{{ p.titulo }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ p.titulo }}</h5>
+              {% if p.ubicacion %}
+                <p class="text-muted small mb-2">
+                  <i class="bi bi-geo-alt"></i> {{ p.ubicacion }}
+                </p>
+              {% endif %}
+              {% if p.precio %}
+                <p class="fw-bold text-primary mb-0">
+                  {{ p.moneda }} {{ p.precio }}
+                </p>
+              {% endif %}
+            </div>
+          </div>
+        </a>
       </div>
-    </a>
+      {% empty %}
+        <p>No hay propiedades disponibles.</p>
+      {% endfor %}
+    </div>
   </div>
-  {% empty %}
-  <p>No hay propiedades disponibles.</p>
-  {% endfor %}
-</div>
+</section>
+<!-- FIN SECCIÓN PROPIEDADES -->
 
 <!-- SECCIÓN NEWSLETTER -->
 <section class="newsletter-section">
@@ -124,7 +128,7 @@
       <div class="col-12 col-lg-7">
         <h2 class="newsletter-title">INSCRÍBETE AL NEWSLETTER</h2>
         <p class="newsletter-text">
-          Inscríbete a nuestro Newsletter para recibir las últimas noticias sobre los proyectos que más te interesan.
+          Inscríbete a nuestro Newsletter para recibir las últimas noticias sobre las propiedades que más te interesan.
         </p>
       </div>
       <div class="col-12 col-lg-5">
