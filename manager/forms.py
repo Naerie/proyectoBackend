@@ -104,10 +104,19 @@ class FormRegistrarP(forms.ModelForm):
 
         }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['operacion'].empty_label = "Seleccione una operación"
+        self.fields['estado'].empty_label = "Seleccione un estado"
+        self.fields['tipo_propiedad'].empty_label = "Seleccione un tipo de inmueble"
+        self.fields['comuna'].empty_label = "Seleccione una comuna"
+
     def clean(self):
         cleaned_data = super().clean()
+
         superficie = cleaned_data.get('superficie')
         superficie_construida = cleaned_data.get('superficieConstruida')
+        
         estacionamiento = cleaned_data.get('estacionamiento')
         n_est = cleaned_data.get('nEstacionamientos')
         # validacion superficies
