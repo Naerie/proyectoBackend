@@ -28,3 +28,11 @@ class Suscripcion(models.Model):
     def __str__(self):
         estado = "Activa" if self.estadoSus else "Inactiva"
         return f"{self.emailSus} - {estado}"
+    
+
+class Interes(models.Model):
+    cliente = models.ForeignKey('app_clientes.Cliente', on_delete=models.CASCADE, related_name='intereses')
+    propiedad = models.ForeignKey('app_propiedades.Propiedad', on_delete=models.CASCADE, related_name='intereses')
+
+    def __str__(self):
+        return f"{self.cliente} → {self.propiedad} ({self.estado})"
