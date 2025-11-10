@@ -1,27 +1,45 @@
 from django.shortcuts import render ,redirect,get_object_or_404
 from django.http import JsonResponse
 from main import forms
-from manager.models import Propiedad
+from manager.models import Propiedad, OperacionesPropiedades, TiposPropiedades, Comunas, EstadosPropiedades
 
 #datos.py
 from datos import about
 
 
 # Create your views here.
+
 def index(request):
     propiedades = Propiedad.objects.all().order_by('-fecha')
-    # subscripcion
+
+    # busqueda
+    operacion_id = request.GET.get('operacion')
+    tipo_id = request.GET.get('tipo')
+    comuna_id = request.GET.get('comuna')
+
+    if operacion_id:
+        propiedades = propiedades.filter(operacion_id=operacion_id)
+    if tipo_id:
+        propiedades = propiedades.filter(tipo_propiedad_id=tipo_id)
+    if comuna_id:
+        propiedades = propiedades.filter(comuna_id=comuna_id)
+
+    # suscripcion
     formulario = forms.FormSuscripcion()
-    if request.method =='POST':
+    if request.method == 'POST':
         formulario = forms.FormSuscripcion(request.POST)
         if formulario.is_valid():
             formulario.save()
-            return redirect('home')
+            return redirect('home')  
+
     data = {
         'propiedades': propiedades,
-        'form':formulario
+        'form': formulario,
+        'operacion': OperacionesPropiedades.objects.all(),
+        'tipos_propiedades': TiposPropiedades.objects.all(),
+        'comuna': Comunas.objects.all(),
     }
-    
+
     return render(request, 'templatesMain/home.html', data)
 
 def propiedad(request, slug):

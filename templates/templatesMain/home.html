@@ -37,46 +37,54 @@
 
 <!-- BARRA DE BUSQUEDA -->
 <div class="container d-flex justify-content-center mt-4 mb-4">
-  <form class="row g-2 align-items-center">
-    <!-- seleccion de estado de propiedad -->
+  <form class="row g-2 align-items-center" method="get" action=".">
+    
+    <!-- Operación -->
     <div class="col-auto">
-      <select class="form-select">
-        <option selected>Operación</option>
-              {% for o in operacion %}
-                <option value="{{ o|lower }}">{{ o }}</option>
-              {% endfor %}
+      <select class="form-select" name="operacion">
+        <option value="">Operación</option>
+        {% for o in operacion %}
+          <option value="{{ o.id }}" {% if request.GET.operacion == o.id|stringformat:"s" %}selected{% endif %}>
+            {{ o.operacion }}
+          </option>
+        {% endfor %}
       </select>
     </div>
     
-    <!-- seleccion de tipo de propiedad -->
+    <!-- Tipo de inmueble -->
     <div class="col-auto">
-      <select class="form-select">
-        <option selected>Tipo de inmueble</option>
-              {% for t in tipos_inmueble %}
-                <option value="{{ t|lower }}">{{ t }}</option>
-              {% endfor %}
+      <select class="form-select" name="tipo">
+        <option value="">Tipo de inmueble</option>
+        {% for t in tipos_inmueble %}
+          <option value="{{ t.id }}" {% if request.GET.tipo == t.id|stringformat:"s" %}selected{% endif %}>
+            {{ t.tipoPropiedad }}
+          </option>
+        {% endfor %}
       </select>
     </div>
-    <!-- seleccion de comuna -->
+
+    <!-- Comuna -->
     <div class="col-auto">
-        <select class="form-select">
-            <option selected>Comuna</option>
-              {% for c in comuna %}
-                <option value="{{ c|lower }}">{{ c }}</option>
-              {% endfor %}
-        </select>
-        </div>
-
-
+      <select class="form-select" name="comuna">
+        <option value="">Comuna</option>
+        {% for c in comuna %}
+          <option value="{{ c.id }}" {% if request.GET.comuna == c.id|stringformat:"s" %}selected{% endif %}>
+            {{ c.comuna }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
     <!-- Botón -->
     <div class="col-auto">
       <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
-
-
+    <div class="col-auto">
+      <a href="{% url 'home' %}" class="btn btn-secondary">Limpiar</a>
+    </div>
 
   </form>
 </div>
+
 
     <!-- FIN BARRA DE BUSQUEDA -->
     <!-- grid cards -->
