@@ -2,7 +2,7 @@
     --azul: #00285D;
     --naranjo: #D45831;
     --blanco: #ffffff;
-    --gris-fondo: #f5f7fa;
+    --gris-fondo: #ffffff;
 }
 
 body {
@@ -73,4 +73,122 @@ section.container-fluid {
 
 .footer i {
     color: var(--naranjo);
+}
+
+
+/* ======== BARRA DE BÚSQUEDA (full-width) ======== */
+section.search-section {
+    width: 100%;
+    background-color: var(--azul) !important;
+    color: var(--blanco) !important;
+    padding: 1.5rem 0 !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15) !important;
+    position: relative;
+    z-index: 2;
+}
+
+/* inputs de la barra (selects) */
+section.search-section .form-select {
+    min-width: 220px;
+    height: 48px;
+    border-radius: 12px !important;
+    border: none !important;
+    background: var(--blanco) !important;
+    color: #333 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08) !important;
+}
+
+section.search-section .form-select:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 0.25rem rgba(212, 88, 49, 0.25) !important;
+}
+
+/* botones */
+section.search-section .btn.btn-naranjo {
+    background: var(--naranjo) !important;
+    border: none !important;
+    color: var(--blanco) !important;
+    padding: 0.6rem 1.25rem !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 14px rgba(212, 88, 49, 0.35) !important;
+}
+section.search-section .btn.btn-naranjo:hover { filter: brightness(0.95); }
+
+section.search-section .btn.btn-outline-light {
+    border-radius: 12px !important;
+    border-width: 2px !important;
+}
+
+/* ======== NEWSLETTER (full-width) ======== */
+section.newsletter-section {
+    width: 100%;
+    padding: 3rem 0 !important;
+    background: linear-gradient(180deg, #F4F7FC 0%, #FFFFFF 100%) !important;
+    border-top: 1px solid #e9eef7 !important;
+    border-bottom: 1px solid #e9eef7 !important;
+}
+
+section.newsletter-section .newsletter-title {
+    color: var(--azul) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.5rem !important;
+}
+
+section.newsletter-section .newsletter-text {
+    color: #475569 !important;
+    margin-bottom: 1rem !important;
+    max-width: 56ch;
+}
+
+/* formulario newsletter */
+section.newsletter-section .newsletter-form {
+    display: flex !important;
+    gap: 0.75rem !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+}
+
+/* el input que viene de {{ form.emailSus }} */
+section.newsletter-section input,
+section.newsletter-section .form-control,
+section.newsletter-section input[type="email"] {
+    flex: 1 1 260px !important;
+    min-width: 240px !important;
+    height: 52px !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 12px !important;
+    border: 1.5px solid #dbe4f0 !important;
+    background: #fff !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,.04) !important;
+}
+
+section.newsletter-section input:focus,
+section.newsletter-section .form-control:focus {
+    outline: none !important;
+    border-color: var(--azul) !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 40, 93, 0.18) !important;
+}
+
+/* botón newsletter reutiliza .btn-naranjo, por si acaso fuerza aquí también */
+section.newsletter-section .btn.btn-naranjo {
+    background: var(--naranjo) !important;
+    color: var(--blanco) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 0.8rem 1.25rem !important;
+}
+
+/* ======== helpers responsivos ======== */
+@media (max-width: 576px) {
+    section.search-section .form-select {
+    min-width: 100% !important;
+    }
+    section.newsletter-section .newsletter-form {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    }
+    section.newsletter-section .newsletter-form .btn {
+    width: 100% !important;
+    }
 }

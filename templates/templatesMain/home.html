@@ -10,7 +10,6 @@
 <!-- prueba de contenido dinamico -->
 {% block content %}
 <!-- Carrusel -->
-<!-- Carrusel de ancho completo -->
 <div id="carouselExampleFade" class="carousel slide carousel-fade w-100" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -35,62 +34,64 @@
 
 
 
-<!-- BARRA DE BUSQUEDA -->
-<div class="container d-flex justify-content-center mt-4 mb-4">
-  <form class="row g-2 align-items-center" method="get" action=".">
-    
-    <!-- Operación -->
-    <div class="col-auto">
-      <select class="form-select" name="operacion">
-        <option value="">Operación</option>
-        {% for o in operacion %}
-          <option value="{{ o.id }}" {% if request.GET.operacion == o.id|stringformat:"s" %}selected{% endif %}>
-            {{ o.operacion }}
-          </option>
-        {% endfor %}
-      </select>
-    </div>
-    
-    <!-- Tipo de propiedades -->
-    <div class="col-auto">
-      <select class="form-select" name="tipo">
-        <option value="">Tipo de inmueble</option>
-        {% for t in tipos_propiedades %}
-          <option value="{{ t.id }}" {% if request.GET.tipo == t.id|stringformat:"s" %}selected{% endif %}>
-            {{ t.tipoPropiedad }}
-          </option>
-        {% endfor %}
-      </select>
-    </div>
+<!-- BARRA DE BÚSQUEDA -->
+<section class="search-section">
+  <div class="container">
+    <form class="row g-2 align-items-center justify-content-center" method="get" action=".">
+      
+      <!-- Operación -->
+      <div class="col-12 col-md-auto">
+        <select class="form-select search-input" name="operacion">
+          <option value="">Operación</option>
+          {% for o in operacion %}
+            <option value="{{ o.id }}" {% if request.GET.operacion == o.id|stringformat:"s" %}selected{% endif %}>
+              {{ o.operacion }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
 
-    <!-- Comuna -->
-    <div class="col-auto">
-      <select class="form-select" name="comuna">
-        <option value="">Comuna</option>
-        {% for c in comuna %}
-          <option value="{{ c.id }}" {% if request.GET.comuna == c.id|stringformat:"s" %}selected{% endif %}>
-            {{ c.comuna }}
-          </option>
-        {% endfor %}
-      </select>
-    </div>
-    <!-- Botón -->
-    <div class="col-auto">
-      <button type="submit" class="btn btn-primary">Buscar</button>
-    </div>
-    <div class="col-auto">
-      <a href="{% url 'home' %}" class="btn btn-secondary">Limpiar</a>
-    </div>
+      <!-- Tipo de propiedades -->
+      <div class="col-12 col-md-auto">
+        <select class="form-select search-input" name="tipo">
+          <option value="">Tipo de inmueble</option>
+          {% for t in tipos_propiedades %}
+            <option value="{{ t.id }}" {% if request.GET.tipo == t.id|stringformat:"s" %}selected{% endif %}>
+              {{ t.tipoPropiedad }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
 
-  </form>
-</div>
+      <!-- Comuna -->
+      <div class="col-12 col-md-auto">
+        <select class="form-select search-input" name="comuna">
+          <option value="">Comuna</option>
+          {% for c in comuna %}
+            <option value="{{ c.id }}" {% if request.GET.comuna == c.id|stringformat:"s" %}selected{% endif %}>
+              {{ c.comuna }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Botones -->
+      <div class="col-12 col-md-auto d-flex gap-2">
+        <button type="submit" class="btn btn-naranjo btn-lg">Buscar</button>
+        <a href="{% url 'home' %}" class="btn btn-outline-light btn-lg">Limpiar</a>
+      </div>
+
+    </form>
+  </div>
+</section>
+<!-- FIN BARRA DE BÚSQUEDA -->
 
 
-    <!-- FIN BARRA DE BUSQUEDA -->
+
     <!-- grid cards -->
 <div class="row">
   {% for p in propiedades %}
-  <div class="col-md-4 mb-4">
+  <div class="col-md-4 mb-4 mt-4">
     <a href="{% url 'detalle-propiedad' p.slug %}" class="text-decoration-none text-dark">
       <div class="card h-100 shadow-sm border-0 rounded-3">
         <!-- Imagen principal -->
@@ -116,28 +117,34 @@
   {% endfor %}
 </div>
 
-<!-- SECCION DE SUSCRIPCION -->
-<div class="container my-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-sm p-4 text-center">
-        <h5 class="card-title mb-3">¡Suscríbete para recibir avisos de nuevas propiedades!</h5>
-        <p class="card-text mb-4">Recibe información directamente en tu correo sobre propiedades nuevas, promociones y más.</p>
-        <form method="POST" action="#" id="formSuscripcion" class="input-group mb-3">
+<!-- SECCIÓN NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="row align-items-center gy-3">
+      <div class="col-12 col-lg-7">
+        <h2 class="newsletter-title">INSCRÍBETE AL NEWSLETTER</h2>
+        <p class="newsletter-text">
+          Inscríbete a nuestro Newsletter para recibir las últimas noticias sobre los proyectos que más te interesan.
+        </p>
+      </div>
+      <div class="col-12 col-lg-5">
+        <form method="POST" action="#" id="formSuscripcion" class="newsletter-form">
           {% csrf_token %}
+          <!-- tu campo ya viene del form; lo envolvemos y estilizamos por CSS -->
           {{ form.emailSus }}
-          <button class="btn btn-primary" type="submit">Suscribirme</button>
+          <button class="btn btn-naranjo btn-lg w-auto" type="submit">Suscribirme</button>
         </form>
         {% if form.emailSus.errors %}
-          <div class="text-danger small mt-1">
+          <div class="text-danger small mt-2">
             {{ form.emailSus.errors }}
           </div>
         {% endif %}
-        <small class="text-muted">Nunca compartiremos tu correo con terceros.</small>
-        <div id="mensajeSuscripcion" class="mt-2"></div>
       </div>
     </div>
   </div>
+</section>
+<!-- FIN SECCIÓN NEWSLETTER -->
+
 </div>
 
 {% endblock %}
