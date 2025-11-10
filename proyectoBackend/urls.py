@@ -44,8 +44,8 @@ urlpatterns = [
     path('gestion/eliminar/<str:campo>/<int:id>/', mViews.eliminarGestion, name='eliminar-gestion'),
     path('gestion/actualizar/<str:campo>/<int:id>/', mViews.actualizarGestion, name='actualizar-gestion'),
     path('logout/', mViews.cerrar_sesion, name='logout'),
-    path('interes/', mViews.Interes, name='tabla-interes'),
-    path('interes/eliminar/<int:id>/', mViews.eliminarCliente, name='eliminar-cliente'),
+    path('interes/', mViews.Intereses, name='tabla-interes'),
+    path('interes/eliminar/<int:id>/', mViews.eliminarInteres, name='eliminar-interes'),
     path('suscripciones/', mViews.verSuscripciones, name='ver-suscripciones')
 ]
 

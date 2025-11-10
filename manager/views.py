@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from manager import forms
-from main.models import Contacto, Cliente, Suscripcion
+from main.models import Contacto, Cliente, Suscripcion, Interes
 from manager.models import Propiedad, TiposPropiedades, Comunas, EstadosPropiedades, OperacionesPropiedades
 
 @login_required(login_url='login-admin')
@@ -196,15 +196,15 @@ def cerrar_sesion(request):
 
 @login_required(login_url='login-admin')
 @user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
-def Interes(request):
-    clientes = Cliente.objects.all()
-    return render(request, 'templatesManager/interes.html', {'clientes':clientes})
+def Intereses(request):
+    intereses = Interes.objects.select_related('cliente', 'propiedad').all()
+    return render(request, 'templatesManager/interes.html', {'intereses': intereses})
 
 @login_required(login_url='login-admin')
 @user_passes_test(lambda u: u.is_staff or u.is_superuser, login_url='login-admin')
-def eliminarCliente(request, id): #cambiar por interes luego?
-    cliente = get_object_or_404(Cliente, id=id)
-    cliente.delete()  
+def eliminarInteres(request, id):
+    interes = get_object_or_404(Interes, id=id)
+    interes.delete()
     return redirect('tabla-interes') 
 
 @login_required(login_url='login-admin')
